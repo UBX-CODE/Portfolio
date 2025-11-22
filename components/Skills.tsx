@@ -95,7 +95,7 @@ const Skills: React.FC = () => {
   ];
 
   return (
-    <section id="skills" className="py-24 bg-[#0a0a0a] overflow-hidden relative">
+    <section id="skills" className="py-24 bg-brand-dark overflow-hidden relative">
       {/* Floating Background Icons */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {floatingIcons.map((item, i) => (

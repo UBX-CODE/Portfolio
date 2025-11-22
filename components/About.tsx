@@ -61,28 +61,6 @@ const About: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Abstract Visual */}
-          {/* <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative h-full min-h-[400px] flex items-center justify-center"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-brand-red/20 to-brand-orange/20 rounded-3xl blur-3xl" />
-            <img 
-              src="/3.jpg" 
-              alt="Abstract Workspace" 
-              className="relative z-10 rounded-3xl shadow-2xl object-cover w-full h-[500px]"
-            /> */}
-
-          {/* Floating Stats Card */}
-          {/* <div className="absolute -bottom-6 -left-6 bg-brand-dark p-6 rounded-xl border border-white/10 shadow-xl z-20">
-              <p className="text-4xl font-bold text-white">5+</p>
-              <p className="text-gray-400 text-sm uppercase tracking-wide mt-1">Projects Completed</p>
-            </div>
-          </motion.div> */}
-
         </div>
       </div>
     </section>
