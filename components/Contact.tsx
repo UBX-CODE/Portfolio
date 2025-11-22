@@ -5,7 +5,7 @@ import { Send, MapPin } from 'lucide-react';
 
 const Contact: React.FC = () => {
   return (
-    <section id="contact" className="py-24 bg-black relative">
+    <section id="contact" className="py-24 bg-brand-dark relative">
       <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
