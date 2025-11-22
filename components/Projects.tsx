@@ -32,7 +32,7 @@ const Projects: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative bg-[#111] rounded-3xl overflow-hidden border border-white/5 hover:border-brand-orange/50 transition-all duration-500"
+              className="group relative bg-[#111] rounded-3xl overflow-hidden border border-white/5 hover:border-brand-orange/50 transition-all duration-500 will-change-transform"
             >
               {/* Hover Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-red/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />

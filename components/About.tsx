@@ -15,6 +15,7 @@ const About: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="will-change-transform"
           >
             <h2 className="text-brand-yellow font-bold tracking-widest uppercase text-sm mb-3">About Me</h2>
             <h3 className="text-4xl md:text-5xl font-heading font-bold text-white mb-8">
@@ -51,9 +52,9 @@ const About: React.FC = () => {
                         <span key={index} className="text-xs bg-white/10 px-3 py-1 rounded-full text-gray-300">
                           {cert.issuer}: {cert.name}
                         </span>
-                        
+
                       ))}
-                      <spam className="text-xs bg-white/10 px-3 py-1 rounded-full text-gray-300">Google Cloud : Generative AI Learning Path </spam>
+                      <span className="text-xs bg-white/10 px-3 py-1 rounded-full text-gray-300">Google Cloud : Generative AI Learning Path </span>
                     </div>
                   </div>
                 </div>

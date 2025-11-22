@@ -62,7 +62,7 @@ const Skills: React.FC = () => {
         <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 z-10 bg-gradient-to-r from-[#0a0a0a] to-transparent pointer-events-none"></div>
         <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 z-10 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none"></div>
 
-        <div ref={rowRef} className="flex w-max gap-4 px-2">
+        <div ref={rowRef} className="flex w-max gap-4 px-2 will-change-transform">
           {[...items, ...items, ...items, ...items].map((skill, i) => (
             <div
               key={i}
@@ -122,7 +122,7 @@ const Skills: React.FC = () => {
               width: item.size,
               filter: `blur(3px) ${item.className ? 'invert(1)' : ''}`,
             }}
-            className="object-contain z-0"
+            className="object-contain z-0 will-change-transform"
           />
         ))}
       </div>
