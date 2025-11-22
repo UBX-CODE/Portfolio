@@ -7,6 +7,7 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Loader from './components/Loader';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -31,7 +32,7 @@ const App: React.FC = () => {
     // Simulate loading for smooth entrance
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 2500);
     return () => {
       clearTimeout(timer);
       lenis.destroy();
@@ -39,11 +40,7 @@ const App: React.FC = () => {
   }, []);
 
   if (isLoading) {
-    return (
-      <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-brand-red"></div>
-      </div>
-    );
+    return <Loader />;
   }
 
   return (
