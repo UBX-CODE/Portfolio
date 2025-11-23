@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Code2, ExternalLink, Mail } from 'lucide-react';
+import { ArrowRight, ExternalLink, Mail } from 'lucide-react';
 import { RESUME_DATA } from '../data';
 
 const Hero: React.FC = () => {
   return (
-    <section id="home" className="relative min-h-screen w-full bg-brand-dark flex items-center">
+    <section id="home" className="relative min-h-[100svh] w-full bg-brand-dark flex items-center ">
 
       {/* Wavy Background Layers */}
       <div className="absolute inset-0 z-0 pointer-events-none">

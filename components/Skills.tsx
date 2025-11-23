@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { motion } from 'framer-motion';
-import { CheckCircle2 } from 'lucide-react';
 import { RESUME_DATA } from '../data';
 
 const Skills: React.FC = () => {
@@ -26,73 +25,6 @@ const Skills: React.FC = () => {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
   };
-
-  const SkillRow = ({ items, direction = 'left', speed = 20 }: { items: string[], direction?: 'left' | 'right', speed?: number }) => {
-    const rowRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-      const el = rowRef.current;
-      if (!el) return;
-
-      const context = gsap.context(() => {
-        const tl = gsap.timeline({
-          repeat: -1,
-          defaults: { ease: "none" }
-        });
-
-        if (direction === 'left') {
-          tl.to(el, {
-            xPercent: -25,
-            duration: speed,
-          });
-        } else {
-          gsap.set(el, { xPercent: -25 });
-          tl.to(el, {
-            xPercent: 0,
-            duration: speed,
-          });
-        }
-      }, rowRef);
-
-      return () => context.revert();
-    }, [direction, speed]);
-
-    return (
-      <div className="w-full overflow-hidden py-2 relative">
-        <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 z-10 bg-gradient-to-r from-[#0a0a0a] to-transparent pointer-events-none"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 z-10 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none"></div>
-
-        <div ref={rowRef} className="flex w-max gap-4 px-2 will-change-transform">
-          {[...items, ...items, ...items, ...items].map((skill, i) => (
-            <div
-              key={i}
-              className="px-6 py-3 md:px-8 md:py-4 bg-[#1A1A1A] border border-white/5 rounded-lg text-gray-400 font-medium text-sm md:text-base whitespace-nowrap hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors duration-300 cursor-default shadow-lg"
-            >
-              {skill}
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  };
-
-  const floatingIcons = [
-    { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", x: "5%", y: "10%", size: 80 },
-    { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", x: "90%", y: "20%", size: 90 },
-    { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", x: "15%", y: "60%", size: 85 },
-    { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg", x: "85%", y: "70%", size: 95 },
-    { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg", x: "5%", y: "35%", size: 75 },
-    { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg", x: "95%", y: "40%", size: 75 },
-    { icon: "https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg", x: "45%", y: "15%", size: 70 },
-    { icon: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg", x: "40%", y: "35%", size: 80 },
-    { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg", x: "10%", y: "85%", size: 90 },
-    { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg", x: "75%", y: "5%", size: 80, className: "invert" },
-    { icon: "https://devicon-website.vercel.app/api/figma/original.svg", x: "85%", y: "92%", size: 105 },
-    { icon: "https://devicon-website.vercel.app/api/docker/original.svg", x: "15%", y: "92%", size: 105 },
-    { icon: "https://devicon-website.vercel.app/api/vscode/original.svg", x: "46%", y: "65%", size: 105 },
-    { icon: "https://devicon-website.vercel.app/api/mysql/original.svg", x: "62%", y: "81%", size: 105 },
-    { icon: "https://devicon-website.vercel.app/api/mongodb/original.svg", x: "69%", y: "41%", size: 105 },
-  ];
 
   return (
     <section id="skills" className="py-24 bg-brand-dark overflow-hidden relative">
@@ -148,7 +80,7 @@ const Skills: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8"
         >
           {RESUME_DATA.skills.map((skillGroup, index) => (
             <motion.div
@@ -161,9 +93,9 @@ const Skills: React.FC = () => {
               </h4>
               <div className="space-y-3">
                 {skillGroup.items.map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-3">
-                    <CheckCircle2 size={16} className="text-brand-red group-hover:text-brand-orange transition-colors" />
-                    <span className="text-gray-300 font-medium">{item}</span>
+                  <div key={idx} className="flex items-center gap-3 group/item">
+                    <div className="h-[1px] w-0 group-hover/item:w-6 bg-gradient-to-r from-brand-red to-transparent transition-all duration-300 ease-out" />
+                    <span className="text-gray-400 font-medium group-hover/item:text-gray-200 transition-colors group-hover/item:translate-x-1 duration-300">{item}</span>
                   </div>
                 ))}
               </div>
@@ -174,5 +106,72 @@ const Skills: React.FC = () => {
     </section>
   );
 };
+
+const SkillRow = ({ items, direction = 'left', speed = 20 }: { items: string[], direction?: 'left' | 'right', speed?: number }) => {
+  const rowRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = rowRef.current;
+    if (!el) return;
+
+    const context = gsap.context(() => {
+      const tl = gsap.timeline({
+        repeat: -1,
+        defaults: { ease: "none" }
+      });
+
+      if (direction === 'left') {
+        tl.to(el, {
+          xPercent: -25,
+          duration: speed,
+        });
+      } else {
+        gsap.set(el, { xPercent: -25 });
+        tl.to(el, {
+          xPercent: 0,
+          duration: speed,
+        });
+      }
+    }, rowRef);
+
+    return () => context.revert();
+  }, [direction, speed]);
+
+  return (
+    <div className="w-full overflow-hidden py-2 relative">
+      <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 z-10 bg-gradient-to-r from-[#0a0a0a] to-transparent pointer-events-none"></div>
+      <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 z-10 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none"></div>
+
+      <div ref={rowRef} className="flex w-max gap-4 px-2 will-change-transform">
+        {[...items, ...items, ...items, ...items].map((skill, i) => (
+          <div
+            key={i}
+            className="px-6 py-3 md:px-8 md:py-4 bg-[#1A1A1A] border border-white/5 rounded-lg text-gray-400 font-medium text-sm md:text-base whitespace-nowrap hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors duration-300 cursor-default shadow-lg"
+          >
+            {skill}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const floatingIcons = [
+  { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", x: "5%", y: "10%", size: 80 },
+  { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", x: "90%", y: "20%", size: 90 },
+  { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", x: "15%", y: "60%", size: 85 },
+  { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg", x: "85%", y: "70%", size: 95 },
+  { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg", x: "5%", y: "35%", size: 75 },
+  { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg", x: "95%", y: "40%", size: 75 },
+  { icon: "https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg", x: "45%", y: "15%", size: 70 },
+  { icon: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg", x: "40%", y: "35%", size: 80 },
+  { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg", x: "10%", y: "85%", size: 90 },
+  { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg", x: "75%", y: "5%", size: 80, className: "invert" },
+  { icon: "https://devicon-website.vercel.app/api/figma/original.svg", x: "85%", y: "92%", size: 105 },
+  { icon: "https://devicon-website.vercel.app/api/docker/original.svg", x: "15%", y: "92%", size: 105 },
+  { icon: "https://devicon-website.vercel.app/api/vscode/original.svg", x: "46%", y: "65%", size: 105 },
+  { icon: "https://devicon-website.vercel.app/api/mysql/original.svg", x: "62%", y: "81%", size: 105 },
+  { icon: "https://devicon-website.vercel.app/api/mongodb/original.svg", x: "69%", y: "41%", size: 105 },
+];
 
 export default Skills;

@@ -9,25 +9,38 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
 
+import Chatbot from './components/Chatbot';
+
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Initialize Lenis for smooth scrolling
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-    });
+    // Disable on mobile for better performance and native feel
+    const isMobile = window.innerWidth < 768;
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+    let lenis: Lenis | null = null;
+
+    if (!isMobile) {
+      lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+      });
     }
 
-    requestAnimationFrame(raf);
+    function raf(time: number) {
+      if (lenis) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+    }
+
+    if (!isMobile) {
+      requestAnimationFrame(raf);
+    }
 
     // Simulate loading for smooth entrance
     const timer = setTimeout(() => {
@@ -35,7 +48,7 @@ const App: React.FC = () => {
     }, 2500);
     return () => {
       clearTimeout(timer);
-      lenis.destroy();
+      if (lenis) lenis.destroy();
     };
   }, []);
 
@@ -54,6 +67,7 @@ const App: React.FC = () => {
         <Contact />
       </main>
       <Footer />
+      <Chatbot />
     </div>
   );
 };
