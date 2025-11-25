@@ -5,7 +5,7 @@ import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
 
 const Projects: React.FC = () => {
   return (
-    <section id="projects" className="py-24 bg-brand-dark relative">
+    <section id="projects" className="py-24  relative">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>

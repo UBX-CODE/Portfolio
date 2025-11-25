@@ -6,7 +6,7 @@ import { GraduationCap, Award } from 'lucide-react';
 const About: React.FC = () => {
   return (
     <section id="about" className="py-24 relative overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="ml-20 container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* Text Content */}
@@ -15,7 +15,7 @@ const About: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="will-change-transform ml-20"
+            className="will-change-transform "
           >
             <h2 className="text-brand-yellow font-bold tracking-widest uppercase text-sm mb-3">About Me</h2>
             <h3 className="text-2xl md:text-4xl font-heading font-bold text-white mb-8">

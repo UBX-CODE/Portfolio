@@ -4,12 +4,11 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
+import CyberField from './components/CyberField';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
-import Footer from './components/Footer';
 import Loader from './components/Loader';
 
-import Chatbot from './components/Chatbot';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -60,14 +59,14 @@ const App: React.FC = () => {
     <div className="bg-brand-dark min-h-screen text-white font-sans selection:bg-brand-red selection:text-white">
       <Navbar />
       <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
+        <CyberField>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Contact />
+          </CyberField>
       </main>
-      <Footer />
-      <Chatbot />
     </div>
   );
 };

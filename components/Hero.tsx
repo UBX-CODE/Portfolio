@@ -1,21 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, ExternalLink, Mail } from 'lucide-react';
-import { RESUME_DATA } from '../data';
 
 const Hero: React.FC = () => {
   return (
-    <section id="home" className="relative min-h-[100svh] w-full bg-brand-dark flex items-center ">
+    <section id="home" className="relative min-h-[100svh] w-full flex items-center ">
 
       {/* Wavy Background Layers */}
       {/* Spotlight Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,#ffffff1a,transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/20 to-black/80" />
+
       </div>
 
       {/* Grid overlay for texture */}
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 z-0 mix-blend-overlay transform-gpu"></div>
+
 
       {/* Content */}
       <div className="container ml-20 px-6 z-10 relative mt-20 md:mt-0">

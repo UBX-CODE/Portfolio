@@ -21,7 +21,7 @@ const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="py-24 bg-brand-dark overflow-hidden relative">
+    <section id="skills" className="py-24 overflow-hidden relative">
       {/* Floating Background Icons */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {floatingIcons.map((item, i) => (
@@ -112,7 +112,7 @@ const logos = [
     src: "https://devicon-website.vercel.app/api/threejs/original.svg?color=%23FFFFFF",
     alt: "Three.js",
   },
-   {
+  {
     src: "https://devicon-website.vercel.app/api/nextjs/original.svg?color=%23FFFFFF",
     alt: "Next.js",
   },

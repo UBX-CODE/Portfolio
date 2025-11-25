@@ -5,7 +5,7 @@ import { Send, MapPin } from 'lucide-react';
 
 const Contact: React.FC = () => {
   return (
-    <section id="contact" className="py-24 bg-brand-dark relative">
+    <section id="contact" className="py-24  relative">
       <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -53,7 +53,7 @@ const Contact: React.FC = () => {
         </motion.div>
 
         <footer className="mt-16 text-gray-500 text-sm">
-          <p>© {new Date().getFullYear()} Ujjawal Bhardwaj. Built with React & Tailwind.</p>
+          <p>© {new Date().getFullYear()} Ujjawal Bhardwaj All rights reserved.</p>
         </footer>
       </div>
     </section>
