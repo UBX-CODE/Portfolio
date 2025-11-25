@@ -1,15 +1,9 @@
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { RESUME_DATA } from '../data';
+import { LogoCloud } from '@/components/ui/logo-cloud-3';
 
 const Skills: React.FC = () => {
-  const allSkills = RESUME_DATA.skills.flatMap(s => s.items);
-
-  // Distribute skills across 3 rows for the marquee
-  const row1 = allSkills.slice(0, Math.ceil(allSkills.length / 3));
-  const row2 = allSkills.slice(Math.ceil(allSkills.length / 3), Math.ceil(allSkills.length * 2 / 3));
-  const row3 = allSkills.slice(Math.ceil(allSkills.length * 2 / 3));
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -67,10 +61,8 @@ const Skills: React.FC = () => {
       </div>
 
       {/* Infinite Marquee Section */}
-      <div className="flex flex-col gap-6 md:gap-8 mb-24 opacity-80 hover:opacity-100 transition-opacity duration-500 relative z-10">
-        <SkillRow items={row1} direction="left" speed={40} />
-        <SkillRow items={row2} direction="right" speed={50} />
-        <SkillRow items={row3} direction="left" speed={45} />
+      <div className="mb-24 relative z-10">
+        <LogoCloud logos={logos} />
       </div>
 
       {/* Detailed Cards Grid */}
@@ -107,54 +99,88 @@ const Skills: React.FC = () => {
   );
 };
 
-const SkillRow = ({ items, direction = 'left', speed = 20 }: { items: string[], direction?: 'left' | 'right', speed?: number }) => {
-  const rowRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = rowRef.current;
-    if (!el) return;
-
-    const context = gsap.context(() => {
-      const tl = gsap.timeline({
-        repeat: -1,
-        defaults: { ease: "none" }
-      });
-
-      if (direction === 'left') {
-        tl.to(el, {
-          xPercent: -25,
-          duration: speed,
-        });
-      } else {
-        gsap.set(el, { xPercent: -25 });
-        tl.to(el, {
-          xPercent: 0,
-          duration: speed,
-        });
-      }
-    }, rowRef);
-
-    return () => context.revert();
-  }, [direction, speed]);
-
-  return (
-    <div className="w-full overflow-hidden py-2 relative">
-      <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 z-10 bg-gradient-to-r from-[#0a0a0a] to-transparent pointer-events-none"></div>
-      <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 z-10 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none"></div>
-
-      <div ref={rowRef} className="flex w-max gap-4 px-2 will-change-transform">
-        {[...items, ...items, ...items, ...items].map((skill, i) => (
-          <div
-            key={i}
-            className="px-6 py-3 md:px-8 md:py-4 bg-[#1A1A1A] border border-white/5 rounded-lg text-gray-400 font-medium text-sm md:text-base whitespace-nowrap hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors duration-300 cursor-default shadow-lg"
-          >
-            {skill}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+const logos = [
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+    alt: "Java",
+  },
+  {
+    src: "https://www.vectorlogo.zone/logos/netlify/netlify-icon.svg",
+    alt: "Netlify",
+  },
+  {
+    src: "https://devicon-website.vercel.app/api/threejs/original.svg?color=%23FFFFFF",
+    alt: "Three.js",
+  },
+   {
+    src: "https://devicon-website.vercel.app/api/nextjs/original.svg?color=%23FFFFFF",
+    alt: "Next.js",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+    alt: "Figma",
+  },
+  {
+    src: "https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg",
+    alt: "GSAP",
+  },
+  {
+    src: "https://www.vectorlogo.zone/logos/framer/framer-icon.svg",
+    alt: "Framer Motion",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    alt: "Python",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    alt: "JavaScript",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+    alt: "CSS",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+    alt: "HTML",
+  },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
+    alt: "Tailwind CSS",
+  },
+  {
+    src: "https://devicon-website.vercel.app/api/github/original.svg?color=%23FFFFFF",
+    alt: "GitHub",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    alt: "React.js",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    alt: "Node.js",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    alt: "MongoDB",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+    alt: "MySQL",
+  },
+  {
+    src: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg",
+    alt: "Postman",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
+    alt: "Firebase",
+  },
+  {
+    src: "https://devicon-website.vercel.app/api/express/original.svg?color=%23F9F9F9",
+    alt: "Express.js",
+  },
+];
 
 const floatingIcons = [
   { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", x: "5%", y: "10%", size: 80 },
@@ -163,15 +189,16 @@ const floatingIcons = [
   { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg", x: "85%", y: "70%", size: 95 },
   { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg", x: "5%", y: "35%", size: 75 },
   { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg", x: "95%", y: "40%", size: 75 },
-  { icon: "https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg", x: "45%", y: "15%", size: 70 },
+  { icon: "https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg", x: "35%", y: "5%", size: 70 },
   { icon: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg", x: "40%", y: "35%", size: 80 },
   { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg", x: "10%", y: "85%", size: 90 },
-  { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg", x: "75%", y: "5%", size: 80, className: "invert" },
-  { icon: "https://devicon-website.vercel.app/api/figma/original.svg", x: "85%", y: "92%", size: 105 },
-  { icon: "https://devicon-website.vercel.app/api/docker/original.svg", x: "15%", y: "92%", size: 105 },
+  { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg", x: "65%", y: "5%", size: 80, className: "invert" },
+  { icon: "https://devicon-website.vercel.app/api/figma/original.svg", x: "85%", y: "85%", size: 105 },
+  { icon: "https://devicon-website.vercel.app/api/docker/original.svg", x: "45%", y: "87%", size: 105 },
   { icon: "https://devicon-website.vercel.app/api/vscode/original.svg", x: "46%", y: "65%", size: 105 },
   { icon: "https://devicon-website.vercel.app/api/mysql/original.svg", x: "62%", y: "81%", size: 105 },
   { icon: "https://devicon-website.vercel.app/api/mongodb/original.svg", x: "69%", y: "41%", size: 105 },
 ];
 
 export default Skills;
+

@@ -53,22 +53,24 @@ const Hero: React.FC = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-montserrat leading-[1.1] text-white mb-6"
+            className="text-5xl md:text-7xl lg:text-5xl font-montserrat leading-[1.1] text-white mb-6"
           >
-            <span className="text-5xl">Hello I'm </span><br />
-            <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-200 font-limelight">
+            <span className="text-3xl">Hello I'm </span><br />
+            <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-200 font-heading font-bold">
               Ujjawal Bhardwaj
             </span>
           </motion.h1>
-
-          <motion.p
+          
+            <motion.p
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-gray-300 max-w-xl leading-relaxed mb-10"
+            className=" text-sm md:text-l text-gray-300 max-w-md leading-relaxed mb-10"
           >
             Full-stack developer crafting agentic AI agents that think, act, and ship value on their own
           </motion.p>
+        
+          
 
           <motion.div
             initial={{ y: 30, opacity: 0 }}
@@ -79,16 +81,16 @@ const Hero: React.FC = () => {
             <a
               href="/UJJAWAL_RESUME.pdf"
               download
-              className="group relative px-8 py-4 bg-brand-red rounded-full overflow-hidden flex items-center justify-center gap-2 text-white font-semibold shadow-lg shadow-brand-red/40 hover:shadow-brand-red/60 transition-all"
+              className="group relative px-5 py-2 bg-brand-red rounded-full overflow-hidden flex items-center justify-center gap-2 text-white font-semibold shadow-lg shadow-brand-red/40 hover:shadow-brand-red/60 transition-all"
             >
               <div className="absolute inset-0 w-full h-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
               <span className="relative">Resume</span>
               <ExternalLink size={18} className="relative" />
             </a>
-
+{/* 
             <a
               href="#projects"
-              className="group px-8 py-4 bg-white text-brand-dark rounded-full flex items-center justify-center gap-2 font-bold hover:bg-gray-200 transition-colors shadow-lg"
+              className="group px-5 py-2 bg-white text-brand-dark rounded-full flex items-center justify-center gap-2 font-bold hover:bg-gray-200 transition-colors shadow-lg"
             >
               <span>View Projects</span>
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -96,11 +98,11 @@ const Hero: React.FC = () => {
 
             <a
               href="#contact"
-              className="group px-8 py-4 bg-white/10 text-white rounded-full flex items-center justify-center gap-2 font-bold hover:bg-white/20 transition-colors backdrop-blur-sm border border-white/10"
+              className="group px-5 py-2 bg-white/10 text-white rounded-full flex items-center justify-center gap-2 font-bold hover:bg-white/20 transition-colors backdrop-blur-sm border border-white/10"
             >
               <span>Contact Me</span>
               <Mail size={18} className="group-hover:scale-110 transition-transform" />
-            </a>
+            </a> */}
           </motion.div>
         </div>
       </div>
