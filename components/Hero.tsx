@@ -8,45 +8,17 @@ const Hero: React.FC = () => {
     <section id="home" className="relative min-h-[100svh] w-full bg-brand-dark flex items-center ">
 
       {/* Wavy Background Layers */}
+      {/* Spotlight Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        {/* Layer 1: Deep Red - furthest back */}
-        <motion.div
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute bottom-[-10%] right-[-10%] w-[120vw] h-[80vh] bg-[#7f1d1d] rounded-[100%] blur-3xl opacity-60 will-change-transform transform-gpu"
-        />
-
-        {/* Layer 2: Vibrant Red - Middle */}
-        <motion.div
-          initial={{ x: 200, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
-          className="absolute bottom-[-15%] right-[-30%] w-[90vw] h-[120vh] bg-brand-red/80 rounded-l-[40%] transform rotate-12 mix-blend-screen will-change-transform transform-gpu"
-        />
-
-        {/* Layer 3: Orange - Middle Front */}
-        <motion.div
-          initial={{ x: 200, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
-          className="absolute top-[10%] right-[-30%] w-[80vw] h-[130vh] bg-brand-orange rounded-l-[45%] transform -rotate-6 shadow-2xl will-change-transform transform-gpu"
-        />
-
-        {/* Layer 4: Yellow/Cream - Front most wave */}
-        <motion.div
-          initial={{ x: 200, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1.2, delay: 0.6, ease: "easeOut" }}
-          className="absolute top-[-10%] right-[-37%] w-[70vw] h-[160vh] bg-brand-yellow rounded-l-[50%] transform rotate-3 shadow-2xl opacity-90 will-change-transform transform-gpu"
-        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,#ffffff1a,transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/20 to-black/80" />
       </div>
 
       {/* Grid overlay for texture */}
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 z-0 mix-blend-overlay transform-gpu"></div>
 
       {/* Content */}
-      <div className="container mx-auto px-6 z-10 relative mt-20 md:mt-0">
+      <div className="container ml-20 px-6 z-10 relative mt-20 md:mt-0">
         <div className="max-w-3xl">
 
           <motion.h1
@@ -60,8 +32,8 @@ const Hero: React.FC = () => {
               Ujjawal Bhardwaj
             </span>
           </motion.h1>
-          
-            <motion.p
+
+          <motion.p
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -69,8 +41,8 @@ const Hero: React.FC = () => {
           >
             Full-stack developer crafting agentic AI agents that think, act, and ship value on their own
           </motion.p>
-        
-          
+
+
 
           <motion.div
             initial={{ y: 30, opacity: 0 }}
@@ -87,7 +59,7 @@ const Hero: React.FC = () => {
               <span className="relative">Resume</span>
               <ExternalLink size={18} className="relative" />
             </a>
-{/* 
+            {/* 
             <a
               href="#projects"
               className="group px-5 py-2 bg-white text-brand-dark rounded-full flex items-center justify-center gap-2 font-bold hover:bg-gray-200 transition-colors shadow-lg"
@@ -117,6 +89,26 @@ const Hero: React.FC = () => {
         animate={{ y: [0, 30, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         className="absolute bottom-1/3 right-[40%] w-4 h-4 bg-brand-yellow rounded-full opacity-30 blur-sm will-change-transform"
+      />
+      <motion.div
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 left-[28%] w-2 h-2 bg-white rounded-full opacity-50 blur-[1px] will-change-transform"
+      />
+      <motion.div
+        animate={{ y: [0, 80, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-1/3 left-[8%] w-4 h-4 bg-brand-yellow rounded-full opacity-30 blur-sm will-change-transform"
+      />
+      <motion.div
+        animate={{ y: [0, -20, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 right-[9%] w-2 h-2 bg-white rounded-full opacity-50 blur-[1px] will-change-transform"
+      />
+      <motion.div
+        animate={{ y: [0, 30, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/3 right-[20%] w-4 h-4 bg-brand-yellow rounded-full opacity-30 blur-sm will-change-transform"
       />
     </section>
   );
