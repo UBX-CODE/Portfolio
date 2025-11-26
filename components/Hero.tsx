@@ -17,14 +17,14 @@ const Hero: React.FC = () => {
 
 
       {/* Content */}
-      <div className="container ml-20 px-6 z-10 relative mt-20 md:mt-0">
+      <div className="container lg:ml-20 mx-auto px-6 z-10 relative mt-20 md:mt-0">
         <div className="max-w-3xl">
 
           <motion.h1
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl lg:text-5xl font-montserrat leading-[1.1] text-white mb-6"
+            className="text-4xl md:text-6xl lg:text-5xl font-montserrat leading-[1.1] text-white mb-6"
           >
             <span className="text-3xl">Hello I'm </span><br />
             <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-200 font-heading font-bold">

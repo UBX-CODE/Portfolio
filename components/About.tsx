@@ -6,7 +6,7 @@ import { GraduationCap, Award } from 'lucide-react';
 const About: React.FC = () => {
   return (
     <section id="about" className="py-24 relative overflow-hidden">
-      <div className="ml-20 container mx-auto px-6 relative z-10">
+      <div className="container lg:ml-20 mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* Text Content */}

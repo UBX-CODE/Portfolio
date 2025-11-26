@@ -54,7 +54,7 @@ const Skills: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-6 mb-16 text-center relative z-10">
-        <h2 className="text-brand-orange font-bold tracking-widest uppercase text-sm mb-3">My Expertise</h2>
+        <h2 className="text-white font-bold tracking-widest uppercase text-sm mb-3">My Expertise</h2>
         <h3 className="text-4xl md:text-5xl font-heading font-bold text-white">
           Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-brand-yellow">Skills</span>
         </h3>
