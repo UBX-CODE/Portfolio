@@ -5,7 +5,7 @@ export const RESUME_DATA = {
   role: "Full Stack Developer",
   tagline: "The best way to reach humans instead of spam folders, deliver transactional and marketing emails at scale.",
   email: "ujjwalsharma1910@gmail.com",
-  linkedin: "ujjwalbhardwaj",
+  linkedin: "ujjawal-bhardwaj-643625372",
   github: "UBX-CODE",
   about: "Results-driven Computer Science Engineering student passionate about building high-quality, scalable software solutions. Skilled in developing full-stack applications using Python, JavaScript, React.js, Node.js and MongoDB. Recognized for problem-solving abilities, innovation, and a strong foundation in object-oriented programming and cloud-based architectures.",
   education: {
@@ -34,7 +34,7 @@ export const RESUME_DATA = {
       type: "Web Application",
       description: "Developed an animated, responsive portfolio website using React, Tailwind CSS, and GSAP — blending modern aesthetics with engaging motion effects.",
       technologies: ["React", "Tailwind CSS", "GSAP", "Framer Motion"],
-      link: "#"
+      link: "https://ujjawal-portfolio.netlify.app/"
     },
     {
       title: "Student Database Management System",
