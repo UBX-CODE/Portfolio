@@ -27,7 +27,7 @@ export const RESUME_DATA = {
       type: "College Student Ranking Platform",
       description: "A full-stack web app that ranks college students based on their coding and professional achievements by fetching real-time data from platforms like LeetCode using GraphQL. Features include live leaderboards and achievement uploads.",
       technologies: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "GraphQL"],
-      link: "#"
+      link: "https://github.com/UBX-CODE/Unirank"
     },
     {
       title: "Personal Portfolio Website",
@@ -41,7 +41,7 @@ export const RESUME_DATA = {
       type: "System Software",
       description: "Designed and implemented a student database system in C using core data structures (Linked Lists, Trees, Hash Tables) for efficient data management and retrieval.",
       technologies: ["C", "File Handling", "Data Structures"],
-      link: "#"
+      link: "https://github.com/UBX-CODE/Portfolio"
     }
   ] as Project[],
   certifications: [
