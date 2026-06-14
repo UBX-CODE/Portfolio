@@ -119,6 +119,3 @@ I am a results-driven Computer Science Engineering student passionate about buil
 <!-- Footer animated wave -->
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=3,2,1&height=100&section=footer" alt="footer wave" width="100%" />
 
-<div align="center">
-  <p>Designed and Developed with 💖 by <b>Ujjawal Bhardwaj</b></p>
-</div>
