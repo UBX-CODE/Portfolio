@@ -37,9 +37,9 @@
 ## 🛠️ My Tech Stack
 
 <div align="center">
-  <p>Here are the technologies I used to build this masterpiece, featuring beautifully rounded aesthetic icons:</p>
+  <p>Here are the technologies I used to build this :</p>
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=react,ts,vite,tailwind,nodejs,mongodb,express,html,css,git,linux,aws&theme=dark" alt="Skills" />
+    <img src="https://skillicons.dev/icons?i=react,ts,vite,tailwind,nodejs,mongodb,express,html,css,git&theme=dark" alt="Skills" />
   </a>
 </div>
 
