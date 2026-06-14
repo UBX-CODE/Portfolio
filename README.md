@@ -1,45 +1,61 @@
 <div align="center">
-  <!-- Replace the image below with your own logo or an animated GIF of your project! -->
-  <img src="https://raw.githubusercontent.com/UBX-CODE/Portfolio/main/public/vite.svg" alt="Logo" width="100" height="100">
+  <!-- Dynamic Aesthetic Header -->
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,2,3&height=250&section=header&text=Ujjawal%20Bhardwaj&fontSize=60&fontAlignY=38&animation=twinkling&fontColor=ffffff&desc=Personal%20Portfolio&descAlignY=55&descAlign=50" alt="header" width="100%" />
 
-  <h1 align="center">✨ Ujjawal Bhardwaj | Personal Portfolio ✨</h1>
+  <!-- Animated Typing Text -->
+  <a href="https://ubxportfolio.netlify.app/">
+    <img src="https://readme-typing-svg.herokuapp.com?font=Poppins&weight=600&size=24&pause=1000&color=00F2FE&center=true&vCenter=true&width=500&lines=Full+Stack+Developer;Creative+Problem+Solver;Tech+Enthusiast" alt="Typing SVG" />
+  </a>
+
+  <br/>
 
   <p align="center">
-    An interactive, animated, and fully responsive personal portfolio website built with modern web technologies.
-    <br />
-    <br />
-    <a href="https://ubxportfolio.netlify.app/"><strong>🌍 Explore the Live Website »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/UBX-CODE/Portfolio.git">View Repository</a>
-    ·
-    <a href="https://github.com/UBX-CODE/Portfolio/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/UBX-CODE/Portfolio/issues">Request Feature</a>
+    An interactive, highly animated, and fully responsive personal portfolio website crafted with modern web technologies.
+  </p>
+
+  <!-- Curvy, Smooth Links -->
+  <p align="center">
+    <a href="https://ubxportfolio.netlify.app/">
+      <img src="https://img.shields.io/badge/🌍_Live_Website-00C9FF?style=flat&logoColor=white&color=000000&labelColor=00C9FF" alt="Live Website" />
+    </a>
+    <a href="https://github.com/UBX-CODE/Portfolio">
+      <img src="https://img.shields.io/badge/📂_Repository-92FE9D?style=flat&logoColor=white&color=000000&labelColor=92FE9D" alt="Repository" />
+    </a>
+    <a href="https://github.com/UBX-CODE/Portfolio/issues">
+      <img src="https://img.shields.io/badge/🐛_Report_Bug-FF512F?style=flat&logoColor=white&color=000000&labelColor=FF512F" alt="Report Bug" />
+    </a>
   </p>
 </div>
 
-<!-- Tech Stack Badges -->
+<br/>
+
 <div align="center">
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
-  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" alt="Vite" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
-  <img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" />
-  <img src="https://img.shields.io/badge/GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=white" alt="GSAP" />
+  <!-- Cool Aesthetic GIF Divider -->
+  <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" width="80%" alt="divider" />
 </div>
 
-<br />
+## 🛠️ My Tech Stack
+
+<div align="center">
+  <p>Here are the technologies I used to build this masterpiece, featuring beautifully rounded aesthetic icons:</p>
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=react,ts,vite,tailwind,nodejs,mongodb,express,html,css,git,linux,aws&theme=dark" alt="Skills" />
+  </a>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" width="80%" alt="divider" />
+</div>
 
 ## 🌟 About The Project
 
-Welcome to my personal portfolio repository! This project serves as my digital resume, showcasing my skills, projects, and educational background as a Full Stack Developer. It is designed with a strong focus on aesthetics and user experience, seamlessly blending modern web design principles with smooth, highly engaging animations.
+Welcome to my personal portfolio repository! This project serves as my digital resume, showcasing my skills, projects, and educational background. It is designed with a strong focus on aesthetics and user experience, seamlessly blending modern web design principles with smooth, highly engaging animations.
 
-<p align="center">
-  <a href="https://ubxportfolio.netlify.app/">
-    <img src="https://forthebadge.com/images/badges/built-with-love.svg" alt="Built with love" />
-  </a>
-</p>
+<div align="center">
+  <img src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif" alt="Coding GIF" width="400" style="border-radius: 15px;" />
+</div>
 
 ### ✨ Key Features
 
@@ -50,33 +66,13 @@ Welcome to my personal portfolio repository! This project serves as my digital r
 - **🖱️ Smooth Scrolling:** Integrated Lenis library for a premium, buttery-smooth scrolling experience.
 - **🤖 Generative AI Ready:** Includes integration with Google's Generative AI for dynamic, intelligent features.
 
----
-
-## 🛠️ Built With
-
-This project leverages the latest and greatest in the web development ecosystem:
-
-* **Framework:** [React 19](https://reactjs.org/) + [Vite](https://vitejs.dev/)
-* **Language:** [TypeScript](https://www.typescriptlang.org/)
-* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-* **Animations:** [GSAP](https://greensock.com/gsap/) & [Framer Motion](https://www.framer.com/motion/)
-* **Scroll Engine:** [Lenis](https://lenis.studiofreight.com/)
-* **Icons:** [Lucide React](https://lucide.dev/)
-* **Deployment:** [Netlify](https://www.netlify.com/)
-
----
+<div align="center">
+  <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" width="80%" alt="divider" />
+</div>
 
 ## 🚀 Getting Started
 
-To get a local copy up and running, follow these simple steps.
-
-### Prerequisites
-
-Make sure you have Node.js installed on your machine.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+Follow these simple steps to get a local copy up and running.
 
 ### Installation
 
@@ -97,61 +93,32 @@ Make sure you have Node.js installed on your machine.
    npm run dev
    ```
 
----
-
-## 📂 Project Structure
-
-```text
-├── src/
-│   ├── components/       # Reusable modular React components
-│   ├── lib/              # Utility functions and library integrations
-│   ├── data.ts           # Centralized portfolio content (skills, projects, etc.)
-│   ├── App.tsx           # Main application root component
-│   ├── index.css         # Global Tailwind styles & CSS variables
-│   └── index.tsx         # Application entry point
-├── public/               # Static assets
-└── package.json          # Project dependencies and configurations
-```
-
----
+<div align="center">
+  <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" width="80%" alt="divider" />
+</div>
 
 ## 👨‍💻 About Me
 
 **Ujjawal Bhardwaj**  
 *Full Stack Developer*
 
-I am a results-driven Computer Science Engineering student passionate about building high-quality, scalable software solutions. I am skilled in developing full-stack applications using Python, JavaScript, React.js, Node.js, and MongoDB. My work is driven by problem-solving, innovation, and a strong foundation in object-oriented programming and cloud-based architectures.
+I am a results-driven Computer Science Engineering student passionate about building high-quality, scalable software solutions. I am skilled in developing full-stack applications using Python, JavaScript, React.js, Node.js, and MongoDB.
 
 - 🎓 **Education:** Bachelor of Engineering in Computer Science & Engineering @ Arya College Of Engineering And IT (2023 – 2027)
 - 💼 **Focus:** Full Stack Development, Cloud Technologies, & AI Integration
-- 🌐 **Connect:** [LinkedIn](https://linkedin.com/in/ujjawal-bhardwaj-643625372) | [GitHub](https://github.com/UBX-CODE) | [Email](mailto:ujjwalsharma1910@gmail.com)
+- 🌐 **Connect:** 
+  <a href="https://linkedin.com/in/ujjawal-bhardwaj-643625372">
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  </a>
+  <a href="mailto:ujjwalsharma1910@gmail.com">
+    <img src="https://img.shields.io/badge/Email-EA4335?style=flat&logo=gmail&logoColor=white" alt="Email" />
+  </a>
 
----
+<br/>
 
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are highly welcome!
-Feel free to check the [issues page](https://github.com/UBX-CODE/Portfolio/issues) if you want to contribute.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is open-source and available under the MIT License.
-
----
+<!-- Footer animated wave -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=3,2,1&height=100&section=footer" alt="footer wave" width="100%" />
 
 <div align="center">
-  <h3>Show some ❤️ by starring this repository!</h3>
-  <p>Designed and Developed with dedication by <b>Ujjawal Bhardwaj</b></p>
-  
-  <a href="https://github.com/UBX-CODE">
-    <img src="https://img.shields.io/github/followers/UBX-CODE?label=Follow&style=social" alt="GitHub" />
-  </a>
+  <p>Designed and Developed with 💖 by <b>Ujjawal Bhardwaj</b></p>
 </div>
