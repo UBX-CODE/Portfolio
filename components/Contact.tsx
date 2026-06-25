@@ -26,7 +26,9 @@ const Contact: React.FC = () => {
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-12">
             <a
-              href="mailto:ujjwalsharma1910@gmail.com"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=ujjwalsharma1910@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center px-8 py-4 bg-brand-charcoal hover:bg-brand-charcoal/90 text-brand-light font-sans rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
             >
               <Send className="mr-2 w-5 h-5" />

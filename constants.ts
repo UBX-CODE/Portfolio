@@ -20,7 +20,7 @@ export const SOCIAL_LINKS = [
   },
   {
     name: 'Email',
-    url: `mailto:${RESUME_DATA.email}`,
+    url: `https://mail.google.com/mail/?view=cm&fs=1&to=${RESUME_DATA.email}`,
     icon: Mail,
   },
 ];

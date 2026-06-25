@@ -76,7 +76,7 @@ const Navbar: React.FC = () => {
                   onClick={() => setIsOpen(false)}
                   className="flex items-center gap-4 text-2xl font-medium text-brand-charcoal/80 hover:text-brand-charcoal transition-colors"
                 >
-                  <Sparkles size={16} className="text-brand-accent" />
+                  
                   {link.name}
                 </a>
               ))}

@@ -5,16 +5,30 @@ import { ArrowRight } from 'lucide-react';
 const Hero: React.FC = () => {
   return (
     <section id="home" className="relative min-h-[100svh] w-full flex flex-col items-center justify-center bg-brand-light text-brand-charcoal overflow-hidden">
-      
+
       {/* Subtle radial gradient background */}
       <div className="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,#ffffff_0%,transparent_70%)] opacity-50" />
+
+      {/* Aesthetic Background Photo */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.7 }}
+        transition={{ duration: 1.5, delay: 0.2 }}
+        className="absolute bottom-0 left-0 w-full md:w-[600px] h-[60vh] md:h-[800px] z-0 pointer-events-none"
+      >
+        <img
+          src="/me2.JPG"
+          alt="Ujjawal Bhardwaj Background"
+          className="w-full h-full object-cover object-top [mask-image:linear-gradient(to_top,black_20%,transparent_100%)] md:[mask-image:radial-gradient(circle_at_bottom_left,black_20%,transparent_100%)] grayscale mix-blend-multiply"
+        />
+      </motion.div>
 
       {/* Subtle Grid Pattern */}
       <div className="absolute inset-0 z-0 pointer-events-none bg-[linear-gradient(to_right,#8c827315_1px,transparent_1px),linear-gradient(to_bottom,#8c827315_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
 
       {/* Content */}
-      <div className="container mx-auto px-6 z-10 relative flex flex-col items-center text-center">
-        
+      <div className="container mx-auto px-6 z-10 relative flex flex-col items-center text-center pt-10 md:pt-0 lg:ml-60 ">
+
         <motion.p
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -28,7 +42,7 @@ const Hero: React.FC = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-playfair leading-tight mb-6"
+          className="text-5xl md:text-7xl lg:text-8xl font-playfair leading-tight mb-6 "
         >
           Ujjawal <br className="md:hidden" />
           <span className="italic text-brand-accent">Bhardwaj.</span>
