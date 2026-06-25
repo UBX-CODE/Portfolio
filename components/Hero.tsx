@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.7 }}
         transition={{ duration: 1.5, delay: 0.2 }}
-        className="absolute bottom-0 left-0 w-full md:w-[600px] h-[60vh] md:h-[800px] z-0 pointer-events-none"
+        className="absolute bottom-0 left-0 w-full md:w-[520px] h-[60vh] md:h-[700px] z-0 pointer-events-none"
       >
         <img
           src="/me2.JPG"
