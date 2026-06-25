@@ -112,10 +112,6 @@ const logos = [
     alt: "Netlify",
   },
   {
-    src: "https://devicon-website.vercel.app/api/threejs/original.svg?color=%23FFFFFF",
-    alt: "Three.js",
-  },
-  {
     src: "https://devicon-website.vercel.app/api/nextjs/original.svg?color=%23FFFFFF",
     alt: "Next.js",
   },
