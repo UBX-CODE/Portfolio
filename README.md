@@ -22,7 +22,7 @@ Welcome to my personal portfolio! This project serves as my digital resume, show
 ## ✧ Previews
 
 <div align="center">
-  <img src="./public/Screenshot 2026-06-25 223158.png" alt="Portfolio Preview 1" width="80%" style="border-radius: 8px; margin-bottom: 20px; border: 1px solid #eaeaea;" />
+  <img src="./public/Screenshot 2026-06-25 225046.png" alt="Portfolio Preview 1" width="80%" style="border-radius: 8px; margin-bottom: 20px; border: 1px solid #eaeaea;" />
   <img src="./public/Screenshot%202026-06-25%20171601.png" alt="Portfolio Preview 2" width="80%" style="border-radius: 8px; border: 1px solid #eaeaea;" />
 </div>
 

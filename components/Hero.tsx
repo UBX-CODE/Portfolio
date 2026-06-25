@@ -19,12 +19,12 @@ const Hero: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.7 }}
         transition={{ duration: 1.5, delay: 0.2 }}
-        className="absolute bottom-0 left-0 w-full md:w-[520px]  md:h-[900px] z-0 pointer-events-none"
+        className="absolute bottom-0 left-0 w-full md:w-[520px]  md:h-[800px] z-0 pointer-events-none"
       >
         <img
-          src="/me3.jpeg"
+          src="/me4.jpeg"
           alt="Ujjawal Bhardwaj Background"
-          className="w-full h-full object-cover object-top [mask-image:radial-gradient(ellipse_at_bottom,black_40%,transparent_70%)] md:[mask-image:radial-gradient(ellipse_at_bottom_left,black_50%,transparent_70%)] grayscale mix-blend-multiply"
+          className="w-full h-full object-cover object-top [mask-image:radial-gradient(ellipse_at_bottom,black_40%,transparent_70%)] md:[mask-image:radial-gradient(ellipse_at_bottom_left,black_50%,transparent_80%)] grayscale mix-blend-multiply"
         />
       </motion.div>
 
