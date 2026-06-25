@@ -4,7 +4,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
-import CyberField from './components/CyberField';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Loader from './components/Loader';
@@ -56,16 +55,14 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="bg-brand-dark min-h-screen text-white font-sans selection:bg-brand-red selection:text-white">
+    <div className="bg-brand-light min-h-screen text-brand-charcoal font-sans selection:bg-brand-accent selection:text-brand-light">
       <Navbar />
       <main>
-        <CyberField>
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Contact />
-          </CyberField>
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
       </main>
     </div>
   );

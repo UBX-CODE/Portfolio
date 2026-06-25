@@ -27,35 +27,24 @@ export const RESUME_DATA = {
       type: "Operating System",
       description: "A full-stack web app that ranks college students based on their coding and professional achievements by fetching real-time data from platforms like LeetCode using GraphQL. Features include live leaderboards and achievement uploads.",
       technologies: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "GraphQL"],
-      link: "https://github.com/UBX-CODE/DevOS"
+      link: "https://github.com/UBX-CODE/DevOS",
+      link2: "https://dev-os-iota.vercel.app"
     },
     {
       title: "ALLC",
       type: "Smart Doctor Appointment Booking System",
       description: "A web-based platform designed to streamline the process of booking doctor appointments. It connects patients with healthcare providers, allowing users to search for doctors, view their availability, and schedule appointments seamlessly.",
       technologies: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "MongoDB"],
-      link: "https://github.com/UBX-CODE/Allc"
-    },
-    {
-      title: "Zoom Clone",
-      type: "Real-Time Video Calling System",
-      description: "Built a real-time video calling system inspired by Zoom using WebRTC for peer-to-peer audio and video communication. Implemented instant messaging during calls using Socket.io for real-time chat functionality.",
-      technologies: ["React.js", "WebRTC", "Tailwind CSS", "Node.js", "Express.js", "Socket.io"],
-      link: "https://github.com/UBX-CODE/"
+      link: "https://github.com/UBX-CODE/Allc",
+      link2: "https://asianllc.vercel.app/"
     },
     {
       title: "Unirank",
       type: "College Student Ranking Platform",
       description: "A full-stack web app that ranks college students based on their coding and professional achievements by fetching real-time data from platforms like LeetCode using GraphQL. Features include live leaderboards and achievement uploads.",
       technologies: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "GraphQL"],
-      link: "https://github.com/UBX-CODE/Unirank"
-    },
-    {
-      title: "Personal Portfolio Website",
-      type: "Web Application",
-      description: "Developed an animated, responsive portfolio website using React, Tailwind CSS, and GSAP — blending modern aesthetics with engaging motion effects.",
-      technologies: ["React", "Tailwind CSS", "GSAP", "Framer Motion"],
-      link: "https://ujjawal-portfolio.netlify.app/"
+      link: "https://github.com/UBX-CODE/Unirank",
+      link2: "https://uni-rank.netlify.app"
     }
   ] as Project[],
   certifications: [

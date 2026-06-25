@@ -1,67 +1,75 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { RESUME_DATA } from '../data';
-import { GraduationCap, Award } from 'lucide-react';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
-      <div className="container lg:ml-20 mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section id="about" className="py-24 md:py-32 relative bg-brand-light text-brand-charcoal overflow-hidden">
+      {/* Subtle Grid Pattern */}
+      <div className="absolute inset-0 z-0 pointer-events-none bg-[linear-gradient(to_right,#8c827315_1px,transparent_1px),linear-gradient(to_bottom,#8c827315_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
 
-          {/* Text Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
+      <div className="container mx-auto px-6 relative z-10 max-w-5xl">
+        <div className="flex flex-col items-center text-center mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-sm tracking-widest uppercase font-sans text-brand-accent mb-4"
+          >
+            About
+          </motion.h2>
+          <motion.h3 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl md:text-5xl font-playfair leading-tight"
+          >
+            Code. Create. <br className="md:hidden" />
+            <span className="italic text-brand-accent">Innovate.</span>
+          </motion.h3>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20">
+          
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="will-change-transform "
+            className="md:col-span-6 flex flex-col justify-center"
           >
-            <h2 className="text-brand-yellow font-bold tracking-widest uppercase text-sm mb-3">About Me</h2>
-            <h3 className="text-2xl md:text-4xl font-heading font-bold text-white mb-8">
-              Code, Create, <span className="text-brand-red">Innovate.</span>
-            </h3>
-
-            <p className="text-gray-400 text-sm leading-relaxed mb-8 border-l-2 border-brand-red pl-2">
+            <p className="font-sans text-brand-charcoal/80 leading-relaxed text-lg mb-8">
               {RESUME_DATA.about}
             </p>
+          </motion.div>
 
-            <div className="space-y-5">
-              <div className="bg-white/5 p-4 rounded-xl border border-white/10 hover:border-brand-orange/30 transition-colors">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-brand-orange/20 rounded-lg text-brand-orange">
-                    <GraduationCap size={24} />
-                  </div>
-                  <div>
-                    <h4 className="text-md font-bold text-white mb-1">Education</h4>
-                    <p className="text-brand-yellow font-medium">{RESUME_DATA.education.degree}</p>
-                    <p className="text-gray-400 text-sm">{RESUME_DATA.education.school} | {RESUME_DATA.education.years}</p>
-                  </div>
-                </div>
-              </div>
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="md:col-span-6 space-y-8"
+          >
+            <div className="pb-8 border-b border-brand-charcoal/10">
+              <h4 className="text-xl font-playfair italic mb-4">Education</h4>
+              <p className="font-sans font-medium text-brand-charcoal">{RESUME_DATA.education.degree}</p>
+              <p className="font-sans text-sm text-brand-charcoal/60 mt-1">{RESUME_DATA.education.school} | {RESUME_DATA.education.years}</p>
+            </div>
 
-              <div className="bg-white/5 p-4 rounded-xl border border-white/10 hover:border-brand-orange/30 transition-colors">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-brand-red/20 rounded-lg text-brand-red">
-                    <Award size={24} />
-                  </div>
-                  <div>
-                    <h4 className="text-md font-bold text-white mb-3">Certifications</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {RESUME_DATA.certifications.slice(0, 6).map((cert, index) => (
-                        <span key={index} className="text-xs bg-white/10 px-3 py-1 rounded-full text-gray-300">
-                          {cert.issuer}: {cert.name}
-                        </span>
-
-                      ))}
-                      <span className="text-xs bg-white/10 px-3 py-1 rounded-full text-gray-300">Google Cloud : Generative AI Learning Path </span>
-                    </div>
-                  </div>
-                </div>
+            <div>
+              <h4 className="text-xl font-playfair italic mb-4">Certifications</h4>
+              <div className="flex flex-wrap gap-2">
+                {RESUME_DATA.certifications.slice(0, 6).map((cert, index) => (
+                  <span key={index} className="text-xs font-sans px-3 py-1.5 rounded-full border border-brand-charcoal/20 text-brand-charcoal/80 bg-white/50">
+                    {cert.name}
+                  </span>
+                ))}
               </div>
             </div>
           </motion.div>
-
+          
         </div>
       </div>
     </section>

@@ -33,7 +33,7 @@ export function LogoCloud({ className, logos, ...props }: LogoCloudProps) {
                             src={logo.src}
                             width={logo.width || "auto"}
                         />
-                        <span className="text-md font-medium text-gray-300 whitespace-nowrap">{logo.alt}</span>
+                        <span className="text-md font-medium text-black/60 whitespace-nowrap">{logo.alt}</span>
                     </div>
                 ))}
             </InfiniteSlider>

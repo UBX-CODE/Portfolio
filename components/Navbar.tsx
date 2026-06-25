@@ -27,16 +27,15 @@ const Navbar: React.FC = () => {
       {/* Desktop Centered Floating Nav */}
       <div className="fixed top-6 left-0 right-0 z-50 hidden md:flex justify-center items-center gap-4 pointer-events-none">
         <nav className={cn(
-          "pointer-events-auto flex items-center gap-1 px-2 py-2 rounded-full border border-white/10 bg-black/20 backdrop-blur-xl shadow-lg transition-all duration-300",
-          isScrolled ? "bg-black/40 border-white/20" : ""
+          "pointer-events-auto flex items-center gap-1 px-2 py-2 rounded-full border border-black/5 bg-white/40 backdrop-blur-xl shadow-sm transition-all duration-300",
+          isScrolled ? "bg-white/80 border-black/10 shadow-md" : ""
         )}>
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="group flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300"
+              className="group flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-black/5 transition-all duration-300"
             >
-              <Sparkles size={12} className="text-gray-500 group-hover:text-brand-yellow transition-colors" />
               <span>{link.name}</span>
             </a>
           ))}
@@ -50,10 +49,10 @@ const Navbar: React.FC = () => {
       {/* Mobile Nav (Hamburger) */}
       <div className="fixed top-0 w-full z-50 md:hidden p-6 flex justify-between items-center pointer-events-none">
         {/* Logo or Brand for mobile if needed, or just empty space to push hamburger right */}
-        <span className="pointer-events-auto font-bold text-xl tracking-tight text-white/80 backdrop-blur-sm px-2 rounded">UB</span>
+        <span className="pointer-events-auto font-bold text-xl tracking-tight text-brand-charcoal/80 backdrop-blur-sm px-2 rounded">UB</span>
 
         <button
-          className="pointer-events-auto p-2 rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-white"
+          className="pointer-events-auto p-2 rounded-full bg-white/50 backdrop-blur-md border border-black/10 text-brand-charcoal"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -67,7 +66,7 @@ const Navbar: React.FC = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-brand-dark/95 backdrop-blur-xl pt-24 px-6 md:hidden"
+            className="fixed inset-0 z-40 bg-brand-light/95 backdrop-blur-xl pt-24 px-6 md:hidden"
           >
             <div className="flex flex-col space-y-6">
               {navLinks.map((link) => (
@@ -75,9 +74,9 @@ const Navbar: React.FC = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-4 text-2xl font-medium text-gray-200 hover:text-brand-yellow transition-colors"
+                  className="flex items-center gap-4 text-2xl font-medium text-brand-charcoal/80 hover:text-brand-charcoal transition-colors"
                 >
-                  <Sparkles size={16} className="text-brand-red" />
+                  <Sparkles size={16} className="text-brand-accent" />
                   {link.name}
                 </a>
               ))}

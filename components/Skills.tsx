@@ -22,6 +22,9 @@ const Skills: React.FC = () => {
 
   return (
     <section id="skills" className="py-24 overflow-hidden relative">
+      {/* Subtle Grid Pattern */}
+      <div className="absolute inset-0 z-0 pointer-events-none bg-[linear-gradient(to_right,#8c827315_1px,transparent_1px),linear-gradient(to_bottom,#8c827315_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+
       {/* Floating Background Icons */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {floatingIcons.map((item, i) => (
@@ -54,9 +57,9 @@ const Skills: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-6 mb-16 text-center relative z-10">
-        <h2 className="text-white font-bold tracking-widest uppercase text-sm mb-3">My Expertise</h2>
-        <h3 className="text-4xl md:text-5xl font-heading font-bold text-white">
-          Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-brand-yellow">Skills</span>
+        <h2 className="text-brand-charcoal/60 font-bold tracking-widest uppercase text-sm mb-3 font-sans">My Expertise</h2>
+        <h3 className="text-4xl md:text-5xl font-playfair text-brand-charcoal">
+          Technical <span className="italic font-playfair text-brand-accent">Skills</span>
         </h3>
       </div>
 
@@ -78,16 +81,16 @@ const Skills: React.FC = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="bg-[rgba(255,255,255,0.03)] backdrop-blur-xl rounded-2xl p-8 border border-[rgba(255,255,255,0.1)] shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] hover:bg-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.2)] transition-all duration-300 hover:-translate-y-2 group"
+              className="bg-white/60 backdrop-blur-xl rounded-2xl p-8 border border-black/5 shadow-sm hover:bg-white/80 hover:border-black/10 transition-all duration-300 hover:-translate-y-2 group"
             >
-              <h4 className="text-xl font-bold text-white mb-6 pb-4 border-b border-white/10 group-hover:border-brand-red/30 transition-colors">
+              <h4 className="text-xl font-bold font-sans text-brand-charcoal mb-6 pb-4 border-b border-black/5 group-hover:border-brand-accent/30 transition-colors">
                 {skillGroup.category}
               </h4>
               <div className="space-y-3">
                 {skillGroup.items.map((item, idx) => (
                   <div key={idx} className="flex items-center gap-3 group/item">
-                    <div className="h-[1px] w-0 group-hover/item:w-6 bg-gradient-to-r from-brand-red to-transparent transition-all duration-300 ease-out" />
-                    <span className="text-gray-400 font-medium group-hover/item:text-gray-200 transition-colors group-hover/item:translate-x-1 duration-300">{item}</span>
+                    <div className="h-[1px] w-0 group-hover/item:w-6 bg-gradient-to-r from-brand-charcoal to-transparent transition-all duration-300 ease-out" />
+                    <span className="text-brand-charcoal/70 font-sans font-medium group-hover/item:text-brand-charcoal transition-colors group-hover/item:translate-x-1 duration-300">{item}</span>
                   </div>
                 ))}
               </div>

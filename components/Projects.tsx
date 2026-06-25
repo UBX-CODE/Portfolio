@@ -5,19 +5,21 @@ import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
 
 const Projects: React.FC = () => {
   return (
-    <section id="projects" className="py-24  relative">
-      <div className="container mx-auto px-6">
+    <section id="projects" className="py-24 relative overflow-hidden">
+      {/* Subtle Grid Pattern */}
+      <div className="absolute inset-0 z-0 pointer-events-none bg-[linear-gradient(to_right,#8c827315_1px,transparent_1px),linear-gradient(to_bottom,#8c827315_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+      <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>
-            <h3 className="text-4xl md:text-5xl font-heading font-bold text-white">
-              Featured <span className="italic font-serif text-brand-yellow">Projects</span>
+            <h3 className="text-4xl md:text-5xl font-playfair text-brand-charcoal">
+              Featured <span className="italic font-playfair text-brand-accent">Projects</span>
             </h3>
           </div>
           <a
             href={`https://github.com/${RESUME_DATA.github}`}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors border-b border-transparent hover:border-white pb-1"
+            className="flex items-center gap-2 text-brand-charcoal/60 hover:text-brand-charcoal transition-colors border-b border-transparent hover:border-brand-charcoal pb-1"
           >
             View Github Profile <ExternalLink size={16} />
           </a>
@@ -31,12 +33,12 @@ const Projects: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative bg-[#0a0a0a] rounded-[2rem] p-8 md:p-10 border border-white/5 hover:border-white/10 transition-all duration-500"
+              className="group relative bg-white/60 backdrop-blur-sm rounded-[2rem] p-8 md:p-10 border border-brand-charcoal/10 hover:border-brand-charcoal/20 transition-all duration-500 shadow-sm"
             >
               <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-10">
                 <div className="flex-grow">
                   <div className="flex justify-between items-start mb-4">
-                    <h4 className="font-oswald text-3xl md:text-4xl font-bold text-white uppercase tracking-wide group-hover:text-brand-yellow transition-colors">
+                    <h4 className="font-sans text-2xl md:text-3xl font-bold text-brand-charcoal tracking-wide group-hover:text-brand-accent transition-colors">
                       {project.title}
                     </h4>
 
@@ -45,28 +47,28 @@ const Projects: React.FC = () => {
                         href={project.link}
                         target="_blank"
                         rel="noreferrer"
-                        className="p-2 bg-white/5 rounded-full text-gray-400 hover:text-white hover:bg-brand-dark transition-colors"
+                        className="p-2 bg-black/5 rounded-full text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-black/10 transition-colors"
                       >
                         <Github size={18} />
                       </a>
                       <a
-                        href={project.link}
+                        href={project.link2}
                         target="_blank"
                         rel="noreferrer"
-                        className="p-2 bg-white/5 rounded-full text-gray-400 hover:text-white hover:bg-brand-dark transition-colors"
+                        className="p-2 bg-black/5 rounded-full text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-black/10 transition-colors"
                       >
                         <ArrowUpRight size={18} />
                       </a>
                     </div>
                   </div>
 
-                  <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-2xl">
+                  <p className="text-brand-charcoal/70 text-base leading-relaxed mb-8 max-w-2xl">
                     {project.description}
                   </p>
 
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {project.technologies.map((tech, i) => (
-                      <span key={i} className="px-4 py-1.5 rounded-full bg-white/5 text-xs font-medium text-gray-400 border border-white/5 hover:bg-white/10 hover:text-white transition-colors">
+                      <span key={i} className="px-4 py-1.5 rounded-full bg-black/5 text-xs font-medium text-brand-charcoal/80 border border-black/5 hover:bg-black/10 transition-colors">
                         {tech}
                       </span>
                     ))}
@@ -78,15 +80,15 @@ const Projects: React.FC = () => {
                     href={project.link}
                     target="_blank"
                     rel="noreferrer"
-                    className="p-3 bg-white/5 rounded-xl text-gray-400 hover:text-white hover:bg-brand-dark transition-colors group-hover:scale-110 duration-300"
+                    className="p-3 bg-black/5 rounded-xl text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-black/10 transition-colors group-hover:scale-110 duration-300"
                   >
                     <Github size={20} />
                   </a>
                   <a
-                    href={project.link}
+                    href={project.link2}
                     target="_blank"
                     rel="noreferrer"
-                    className="p-3 bg-white/5 rounded-xl text-gray-400 hover:text-white hover:bg-brand-dark transition-colors group-hover:scale-110 duration-300"
+                    className="p-3 bg-black/5 rounded-xl text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-black/10 transition-colors group-hover:scale-110 duration-300"
                   >
                     <ArrowUpRight size={20} />
                   </a>

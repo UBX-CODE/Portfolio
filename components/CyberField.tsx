@@ -40,8 +40,8 @@ const CyberField: React.FC<CyberFieldProps> = ({ children }) => {
                 this.vy = (Math.random() - 0.5) * 0.5;
                 this.size = Math.random() * 2 + 1;
 
-                // Tech colors
-                const colors = ['#D00000', '#FF5A1F', '#ffffff', '#333333'];
+                // Tech colors (Light theme variants)
+                const colors = ['#1F1F1F', '#8C8273', '#000000', '#555555'];
                 this.color = colors[Math.floor(Math.random() * colors.length)];
             }
 
@@ -96,7 +96,7 @@ const CyberField: React.FC<CyberFieldProps> = ({ children }) => {
 
                     if (distance < connectionDistance) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 - distance / connectionDistance * 0.1})`;
+                        ctx.strokeStyle = `rgba(31, 31, 31, ${0.15 - distance / connectionDistance * 0.15})`;
                         ctx.lineWidth = 1;
                         ctx.moveTo(particle.x, particle.y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -128,7 +128,7 @@ const CyberField: React.FC<CyberFieldProps> = ({ children }) => {
 
                 if (dist < mouseDistance) {
                     ctx.beginPath();
-                    ctx.strokeStyle = `rgba(208, 0, 0, ${0.2 - dist / mouseDistance * 0.2})`; // Brand Red
+                    ctx.strokeStyle = `rgba(140, 130, 115, ${0.2 - dist / mouseDistance * 0.2})`; // Brand Accent
                     ctx.lineWidth = 1.5;
                     ctx.moveTo(particle.x, particle.y);
                     ctx.lineTo(mouse.x, mouse.y);
@@ -144,7 +144,7 @@ const CyberField: React.FC<CyberFieldProps> = ({ children }) => {
             const gridSize = 50;
             const offset = (window.scrollY * 0.5) % gridSize;
 
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+            ctx.strokeStyle = 'rgba(31, 31, 31, 0.05)';
             ctx.lineWidth = 1;
 
             // Vertical lines
