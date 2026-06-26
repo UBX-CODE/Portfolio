@@ -1,8 +1,12 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
 const Hero: React.FC = () => {
+  const { scrollY } = useScroll();
+  const backgroundY = useTransform(scrollY, [0, 1000], ['0%', '15%']);
+  const textY = useTransform(scrollY, [0, 1000], ['0%', '35%']);
+
   return (
     <section id="home" className="relative min-h-[100svh] w-full flex flex-col items-center justify-center bg-brand-light text-brand-charcoal overflow-hidden">
 
@@ -19,6 +23,7 @@ const Hero: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.7 }}
         transition={{ duration: 1.5, delay: 0.2 }}
+        style={{ y: backgroundY }}
         className="absolute bottom-0 left-0 w-full md:w-[520px]  md:h-[800px] z-0 pointer-events-none"
       >
         <img
@@ -29,7 +34,10 @@ const Hero: React.FC = () => {
       </motion.div>
 
       {/* Content */}
-      <div className="container mx-auto px-6 z-10 relative flex flex-col items-center text-center md:pt-0 lg:ml-60 ">
+      <motion.div 
+        style={{ y: textY }}
+        className="container mx-auto px-6 z-10 relative flex flex-col items-center text-center md:pt-0 lg:ml-60 "
+      >
 
         <motion.p
           initial={{ y: 20, opacity: 0 }}
@@ -73,7 +81,7 @@ const Hero: React.FC = () => {
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </a>
         </motion.div>
-      </div>
+      </motion.div>
 
     </section>
   );

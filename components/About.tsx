@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { RESUME_DATA } from '../data';
+import { TextReveal } from './ui/TextReveal';
+import { ScrollReveal } from './ui/ScrollReveal';
 
 const About: React.FC = () => {
   return (
@@ -19,37 +21,29 @@ const About: React.FC = () => {
           >
             About
           </motion.h2>
-          <motion.h3 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-playfair leading-tight"
-          >
-            Code. Create. <br className="md:hidden" />
-            <span className="italic text-brand-accent">Innovate.</span>
-          </motion.h3>
+          
+          <div className="text-4xl md:text-5xl font-playfair leading-tight flex flex-col md:flex-row items-center justify-center gap-x-3">
+            <TextReveal text="Code. Create." delay={0.1} />
+            <TextReveal text="Innovate." wordClassName="italic text-brand-accent" delay={0.3} />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20">
           
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+          <ScrollReveal 
+            direction="left"
+            distance={50}
             className="md:col-span-6 flex flex-col justify-center"
           >
             <p className="font-sans text-brand-charcoal/80 leading-relaxed text-lg mb-8">
               {RESUME_DATA.about}
             </p>
-          </motion.div>
+          </ScrollReveal>
 
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+          <ScrollReveal 
+            direction="right"
+            distance={50}
+            delay={0.2}
             className="md:col-span-6 space-y-8"
           >
             <div className="pb-8 border-b border-brand-charcoal/10">
@@ -62,13 +56,13 @@ const About: React.FC = () => {
               <h4 className="text-xl font-playfair italic mb-4">Certifications</h4>
               <div className="flex flex-wrap gap-2">
                 {RESUME_DATA.certifications.slice(0, 6).map((cert, index) => (
-                  <span key={index} className="text-xs font-sans px-3 py-1.5 rounded-full border border-brand-charcoal/20 text-brand-charcoal/80 bg-white/50">
+                  <span key={index} className="text-xs font-sans px-3 py-1.5 rounded-full border border-brand-charcoal/20 text-brand-charcoal/80 bg-white/50 hover:bg-brand-accent hover:text-white transition-colors duration-300">
                     {cert.name}
                   </span>
                 ))}
               </div>
             </div>
-          </motion.div>
+          </ScrollReveal>
           
         </div>
       </div>

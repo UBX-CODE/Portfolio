@@ -1,24 +1,56 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import { SOCIAL_LINKS, PERSONAL_INFO } from '../constants';
 import { Send, MapPin } from 'lucide-react';
+import { TextReveal } from './ui/TextReveal';
+
+const SocialLink = ({ link, index, total, scrollYProgress }: { link: any, index: number, total: number, scrollYProgress: MotionValue<number> }) => {
+  const start = index / total;
+  const end = start + (1 / total);
+  
+  const y = useTransform(scrollYProgress, [start, end], [20, 0]);
+  const opacity = useTransform(scrollYProgress, [start, end], [0, 1]);
+
+  return (
+    <motion.a
+      style={{ y, opacity }}
+      href={link.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex flex-col items-center justify-center p-4 rounded-xl bg-white/60 border border-black/5 hover:bg-white/80 hover:border-black/10 transition-all duration-300 shadow-sm group"
+    >
+      <link.icon className="w-8 h-8 text-brand-charcoal/60 group-hover:text-brand-charcoal mb-2 transition-colors" />
+      <span className="text-sm font-sans text-brand-charcoal/60 group-hover:text-brand-charcoal">{link.name}</span>
+    </motion.a>
+  );
+};
 
 const Contact: React.FC = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 95%", "center center"]
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [30, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
       {/* Subtle Grid Pattern */}
       <div className="absolute inset-0 z-0 pointer-events-none bg-[linear-gradient(to_right,#8c827315_1px,transparent_1px),linear-gradient(to_bottom,#8c827315_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
       <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center relative z-10">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+          ref={ref}
+          style={{ scale, y, opacity }}
           className="bg-white/60 border border-black/5 rounded-3xl p-8 md:p-16 backdrop-blur-sm shadow-sm"
         >
           <h2 className="text-brand-charcoal/60 font-sans tracking-wider uppercase mb-4 text-sm">Contact Me</h2>
-          <h3 className="text-4xl md:text-5xl font-playfair text-brand-charcoal mb-6">
-            Let's Work <span className="italic text-brand-accent">Together</span>
-          </h3>
+          <div className="flex justify-center items-center gap-3 text-4xl md:text-5xl font-playfair text-brand-charcoal mb-6">
+            <TextReveal text="Let's Work" delay={0.1} />
+            <TextReveal text="Together" wordClassName="italic text-brand-accent" delay={0.3} />
+          </div>
           <p className="text-brand-charcoal/70 font-sans text-lg mb-10 max-w-2xl mx-auto">
             Whether you have a question, a project proposal, or just want to say hi,
             my inbox is always open. I'll try my best to get back to you!
@@ -41,17 +73,8 @@ const Contact: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-3 gap-4 max-w-md mx-auto">
-            {SOCIAL_LINKS.map((link) => (
-              <a
-                key={link.name}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center justify-center p-4 rounded-xl bg-white/60 border border-black/5 hover:bg-white/80 hover:border-black/10 transition-all duration-300 shadow-sm group"
-              >
-                <link.icon className="w-8 h-8 text-brand-charcoal/60 group-hover:text-brand-charcoal mb-2 transition-colors" />
-                <span className="text-sm font-sans text-brand-charcoal/60 group-hover:text-brand-charcoal">{link.name}</span>
-              </a>
+            {SOCIAL_LINKS.map((link, index) => (
+              <SocialLink key={link.name} link={link} index={index} total={SOCIAL_LINKS.length} scrollYProgress={scrollYProgress} />
             ))}
           </div>
         </motion.div>

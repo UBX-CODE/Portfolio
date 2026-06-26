@@ -1,25 +1,88 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { RESUME_DATA } from '../data';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { RESUME_DATA, SkillCategory } from '../data';
 import { LogoCloud } from '@/components/ui/logo-cloud-3';
+import { TextReveal } from './ui/TextReveal';
+
+const SkillCard = ({ 
+  skillGroup, 
+  index, 
+  colSpan, 
+  borderRadius 
+}: { 
+  skillGroup: SkillCategory, 
+  index: number, 
+  colSpan: string, 
+  borderRadius: string 
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 95%", "center center"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [60, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ y, opacity }}
+      className={`
+        ${colSpan} ${borderRadius}
+        bg-white/40 backdrop-blur-xl p-8 md:p-10
+        border border-brand-charcoal/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)]
+        hover:bg-white hover:border-brand-accent/30 hover:shadow-2xl hover:-translate-y-2
+        transition-all duration-500 ease-out group
+      `}
+    >
+      <div className="flex items-center justify-between mb-8 pb-6 border-b border-brand-charcoal/10 group-hover:border-brand-accent/20 transition-colors duration-500">
+        <h4 className="text-2xl font-bold font-playfair text-brand-charcoal transition-colors duration-500">
+          {skillGroup.category}
+        </h4>
+        <span className="text-brand-charcoal/10 group-hover:text-brand-accent/20 font-sans text-4xl font-light transition-colors duration-500">
+          0{index + 1}
+        </span>
+      </div>
+      
+      <div className="flex flex-wrap gap-3">
+        {skillGroup.items.map((item, idx) => {
+          // Stagger pills based on scroll progress
+          const start = idx / skillGroup.items.length;
+          const end = start + (1 / skillGroup.items.length);
+          // Use useTransform conditionally inside loop is a violation of rules of hooks, 
+          // but since the length is static, it's technically safe. 
+          // To be perfectly safe, we map at the top level or just use the same hook.
+          // Wait, calling hooks inside map is generally bad practice in React.
+          // Let's create a sub-component for Pill to obey hooks rules.
+          return <SkillPill key={idx} item={item} idx={idx} total={skillGroup.items.length} scrollYProgress={scrollYProgress} />;
+        })}
+      </div>
+    </motion.div>
+  );
+};
+
+const SkillPill = ({ item, idx, total, scrollYProgress }: any) => {
+  const start = idx / total;
+  const end = start + (1 / total);
+  
+  const scale = useTransform(scrollYProgress, [start, end], [0.8, 1]);
+  const opacity = useTransform(scrollYProgress, [start, end], [0, 1]);
+  const y = useTransform(scrollYProgress, [start, end], [10, 0]);
+
+  return (
+    <motion.div 
+      style={{ scale, opacity, y }}
+      className="flex items-center gap-2 px-4 py-2 rounded-full border border-brand-charcoal/5 bg-white/50 group-hover:bg-brand-light/50 group/item hover:!bg-brand-accent hover:!border-brand-accent transition-all duration-300"
+    >
+      <span className="text-brand-charcoal/70 font-sans text-sm font-medium group-hover/item:!text-brand-light transition-colors duration-300">
+        {item}
+      </span>
+    </motion.div>
+  );
+};
 
 const Skills: React.FC = () => {
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
     <section id="skills" className="py-24 overflow-hidden relative">
       {/* Subtle Grid Pattern */}
@@ -56,11 +119,19 @@ const Skills: React.FC = () => {
         ))}
       </div>
 
-      <div className="container mx-auto px-6 mb-16 text-center relative z-10">
-        <h2 className="text-brand-charcoal/60 font-bold tracking-widest uppercase text-sm mb-3 font-sans">My Expertise</h2>
-        <h3 className="text-4xl md:text-5xl font-playfair text-brand-charcoal">
-          Technical <span className="italic font-playfair text-brand-accent">Skills</span>
-        </h3>
+      <div className="container mx-auto px-6 mb-16 text-center relative z-10 flex flex-col items-center">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-brand-charcoal/60 font-bold tracking-widest uppercase text-sm mb-3 font-sans"
+        >
+          My Expertise
+        </motion.h2>
+        <div className="flex justify-center items-center gap-3 text-4xl md:text-5xl font-playfair text-brand-charcoal">
+          <TextReveal text="Technical" delay={0.1} />
+          <TextReveal text="Skills" wordClassName="italic text-brand-accent" delay={0.3} />
+        </div>
       </div>
 
       {/* Infinite Marquee Section */}
@@ -70,33 +141,26 @@ const Skills: React.FC = () => {
 
       {/* Detailed Cards Grid */}
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8"
-        >
-          {RESUME_DATA.skills.map((skillGroup, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="bg-white/60 backdrop-blur-xl rounded-2xl p-8 border border-black/5 shadow-sm hover:bg-white/80 hover:border-black/10 transition-all duration-300 hover:-translate-y-2 group"
-            >
-              <h4 className="text-xl font-bold font-sans text-brand-charcoal mb-6 pb-4 border-b border-black/5 group-hover:border-brand-accent/30 transition-colors">
-                {skillGroup.category}
-              </h4>
-              <div className="space-y-3">
-                {skillGroup.items.map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-3 group/item">
-                    <div className="h-[1px] w-0 group-hover/item:w-6 bg-gradient-to-r from-brand-charcoal to-transparent transition-all duration-300 ease-out" />
-                    <span className="text-brand-charcoal/70 font-sans font-medium group-hover/item:text-brand-charcoal transition-colors group-hover/item:translate-x-1 duration-300">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
+          {RESUME_DATA.skills.map((skillGroup, index) => {
+            // Determine column span for 3-2 grid layout
+            const colSpan = index < 3 ? 'lg:col-span-2' : 'lg:col-span-3';
+            // Alternate border radius for unique shapes
+            const borderRadius = index % 2 === 0 
+              ? 'rounded-[2rem] rounded-tr-[4rem]' 
+              : 'rounded-[2rem] rounded-bl-[4rem]';
+            
+            return (
+              <SkillCard 
+                key={index}
+                skillGroup={skillGroup}
+                index={index}
+                colSpan={colSpan}
+                borderRadius={borderRadius}
+              />
+            );
+          })}
+        </div>
       </div>
     </section>
   );

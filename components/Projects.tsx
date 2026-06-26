@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { RESUME_DATA } from '../data';
 import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
+import { TextReveal } from './ui/TextReveal';
+import { ScrollReveal } from './ui/ScrollReveal';
 
 const Projects: React.FC = () => {
   return (
@@ -10,10 +12,9 @@ const Projects: React.FC = () => {
       <div className="absolute inset-0 z-0 pointer-events-none bg-[linear-gradient(to_right,#8c827315_1px,transparent_1px),linear-gradient(to_bottom,#8c827315_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-          <div>
-            <h3 className="text-4xl md:text-5xl font-playfair text-brand-charcoal">
-              Featured <span className="italic font-playfair text-brand-accent">Projects</span>
-            </h3>
+          <div className="flex gap-3 text-4xl md:text-5xl font-playfair text-brand-charcoal">
+            <TextReveal text="Featured" delay={0.1} />
+            <TextReveal text="Projects" wordClassName="italic text-brand-accent" delay={0.3} />
           </div>
           <a
             href={`https://github.com/${RESUME_DATA.github}`}
@@ -27,12 +28,10 @@ const Projects: React.FC = () => {
 
         <div className="flex flex-col gap-6 max-w-5xl mx-auto">
           {RESUME_DATA.projects.map((project, index) => (
-            <motion.div
+            <ScrollReveal
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              scaleStart={0.95}
+              distance={60}
               className="group relative bg-white/60 backdrop-blur-sm rounded-[2rem] p-8 md:p-10 border border-brand-charcoal/10 hover:border-brand-charcoal/20 transition-all duration-500 shadow-sm"
             >
               <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-10">
@@ -94,7 +93,7 @@ const Projects: React.FC = () => {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
