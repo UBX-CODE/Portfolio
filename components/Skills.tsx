@@ -1,19 +1,20 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { RESUME_DATA, SkillCategory } from '../data';
+import { RESUME_DATA } from '../data';
+import { SkillCategory } from '../types';
 import { LogoCloud } from '@/components/ui/logo-cloud-3';
 import { TextReveal } from './ui/TextReveal';
 
-const SkillCard = ({ 
-  skillGroup, 
-  index, 
-  colSpan, 
-  borderRadius 
-}: { 
+const SkillCard: React.FC<{ 
   skillGroup: SkillCategory, 
   index: number, 
   colSpan: string, 
   borderRadius: string 
+}> = ({ 
+  skillGroup, 
+  index, 
+  colSpan, 
+  borderRadius 
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -37,7 +38,7 @@ const SkillCard = ({
       `}
     >
       <div className="flex items-center justify-between mb-8 pb-6 border-b border-brand-charcoal/10 group-hover:border-brand-accent/20 transition-colors duration-500">
-        <h4 className="text-2xl font-bold font-playfair text-brand-charcoal transition-colors duration-500">
+        <h4 className="text-xl font-bold font-sans text-brand-charcoal transition-colors duration-500">
           {skillGroup.category}
         </h4>
         <span className="text-brand-charcoal/10 group-hover:text-brand-accent/20 font-sans text-4xl font-light transition-colors duration-500">

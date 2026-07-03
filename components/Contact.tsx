@@ -3,11 +3,16 @@ import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import { SOCIAL_LINKS, PERSONAL_INFO } from '../constants';
 import { Send, MapPin } from 'lucide-react';
 import { TextReveal } from './ui/TextReveal';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 
-const SocialLink = ({ link, index, total, scrollYProgress }: { link: any, index: number, total: number, scrollYProgress: MotionValue<number> }) => {
+gsap.registerPlugin(ScrollTrigger, useGSAP);
+
+const SocialLink: React.FC<{ link: any, index: number, total: number, scrollYProgress: MotionValue<number> }> = ({ link, index, total, scrollYProgress }) => {
   const start = index / total;
   const end = start + (1 / total);
-  
+
   const y = useTransform(scrollYProgress, [start, end], [20, 0]);
   const opacity = useTransform(scrollYProgress, [start, end], [0, 1]);
 
@@ -27,6 +32,9 @@ const SocialLink = ({ link, index, total, scrollYProgress }: { link: any, index:
 
 const Contact: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
+  const boxRef = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start 95%", "center center"]
@@ -36,8 +44,30 @@ const Contact: React.FC = () => {
   const y = useTransform(scrollYProgress, [0, 1], [30, 0]);
   const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
+  useGSAP(() => {
+    if (!boxRef.current) return;
+    gsap.to(boxRef.current, {
+      opacity: 0,
+      rotation: 360,
+      borderRadius: "50%",
+      scale: 1.5,
+      scrollTrigger: {
+        trigger: boxRef.current,
+        start: "top 80%",
+        end: "top 30%",
+        scrub: 2,
+      }
+    });
+  }, { scope: containerRef });
+
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
+    <section id="contact" ref={containerRef} className="py-24 relative overflow-hidden">
+      {/* Decorative GSAP Box */}
+      <div
+        ref={boxRef}
+        className="absolute bottom-10 right-10 md:bottom-20 md:right-20 w-40 h-40 md:w-64 md:h-64 bg-brand-accent/30 pointer-events-none z-0"
+      />
+
       {/* Subtle Grid Pattern */}
       <div className="absolute inset-0 z-0 pointer-events-none bg-[linear-gradient(to_right,#8c827315_1px,transparent_1px),linear-gradient(to_bottom,#8c827315_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
       <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center relative z-10">

@@ -25,7 +25,7 @@ export const RESUME_DATA = {
     {
       title: "DevOS",
       type: "Operating System",
-      description: "A full-stack web app that ranks college students based on their coding and professional achievements by fetching real-time data from platforms like LeetCode using GraphQL. Features include live leaderboards and achievement uploads.",
+      description: "DevOS is a full-stack developer productivity platform that helps users manage projects, tasks, and visual workflows in one place. It features Kanban task management, an infinite workflow canvas built with React Flow, Google OAuth authentication, GitHub and LeetCode integration, and secure backend APIs. The platform is designed to streamline software planning, system design, and project collaboration through an intuitive and scalable interface.",
       technologies: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "GraphQL"],
       link: "https://github.com/UBX-CODE/DevOS",
       link2: "https://dev-os-iota.vercel.app"

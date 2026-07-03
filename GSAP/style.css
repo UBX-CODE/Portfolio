@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:gilroy;
+}
+html,
+body{
+    height: 100%;
+    width: 100%;
+}
+body{
+    overflow-x: hidden;
+}
+/* Header Styling */
+header {
+    background-color: #000000;
+    color: white;
+    padding: 15px 20px;
+}
+
+/* Flexbox container to align title and navigation */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.container h1{
+    font-size: 30px;
+    font-weight: 200;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+/* Navigation styles */
+nav {
+    display: flex;
+    gap: 20px; /* Space between nav items */
+    flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: lighter;
+    padding: 10px 15px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+#page1 {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    height: 100%;
+    width: 100%;
+    background-color: black;
+}
+/* #string {
+    background-color: #555;
+    height: 200px;
+    width: 100%;
+} */
+#page2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.669);
+}
+#page2 h1{
+    font-size:100px;
+    font-weight: 100;
+    overflow: hidden;
+}
+#page2 h1 span{
+    display: inline-block;
+}
+#cursor{
+    background-color: pink;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    position:fixed;
+}
+
+#page3 {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.325);
+    padding: 50vm 0;
+}
+#page3 h1{
+    font-size: 40vw;
+}
+#page4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.089);
+}
+#box{
+    height: 150px;
+    width: 150px;
+    background-color: #000000bb;
+    margin: 60px;
+}
