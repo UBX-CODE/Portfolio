@@ -28,7 +28,8 @@ export const RESUME_DATA = {
       description: "DevOS is a full-stack developer productivity platform that helps users manage projects, tasks, and visual workflows in one place. It features Kanban task management, an infinite workflow canvas built with React Flow, Google OAuth authentication, GitHub and LeetCode integration, and secure backend APIs. The platform is designed to streamline software planning, system design, and project collaboration through an intuitive and scalable interface.",
       technologies: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "GraphQL"],
       link: "https://github.com/UBX-CODE/DevOS",
-      link2: "https://dev-os-iota.vercel.app"
+      link2: "https://dev-os-iota.vercel.app",
+      images: ["/Dashboard.png", "/LandingPage.png", "/Screenshot 2026-06-25 171601.png", "/Screenshot 2026-06-25 225046.png"]
     },
     {
       title: "ALLC",

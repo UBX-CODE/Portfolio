@@ -5,6 +5,7 @@ export interface Project {
   link?: string;
   link2?: string;
   type: string;
+  images?: string[];
 }
 
 export interface SkillCategory {

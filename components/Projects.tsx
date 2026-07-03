@@ -32,65 +32,100 @@ const Projects: React.FC = () => {
               key={index}
               scaleStart={0.95}
               distance={60}
-              className="group relative bg-white/60 backdrop-blur-sm rounded-[2rem] p-8 md:p-10 border border-brand-charcoal/10 hover:border-brand-charcoal/20 transition-all duration-500 shadow-sm"
+              className="group relative pt-16 md:pt-24 mt-[-4rem] md:mt-[-6rem]"
             >
-              <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-10">
-                <div className="flex-grow">
-                  <div className="flex justify-between items-start mb-4">
-                    <h4 className="font-sans text-2xl md:text-3xl font-bold text-brand-charcoal tracking-wide group-hover:text-brand-accent transition-colors">
-                      {project.title}
-                    </h4>
+              {/* Background Peeking Images */}
+              {project.images && project.images.length > 0 && (
+                <div className="absolute top-16 md:top-24 left-0 w-full h-full flex justify-center z-0 pointer-events-none">
+                  {project.images.slice(0, 2).map((img, i) => {
+                    const hoverRotations = [
+                      'group-hover:-rotate-[12deg]',
+                      'group-hover:rotate-[12deg]',
+                    ];
+                    const hoverTranslations = [
+                      'group-hover:-translate-y-16 group-hover:-translate-x-12 md:group-hover:-translate-y-24 md:group-hover:-translate-x-20',
+                      'group-hover:-translate-y-16 group-hover:translate-x-12 md:group-hover:-translate-y-24 md:group-hover:translate-x-20',
+                    ];
 
-                    <div className="flex gap-3 md:hidden">
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="p-2 bg-black/5 rounded-full text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-black/10 transition-colors"
+                    return (
+                      <div
+                        key={i}
+                        className={`absolute top-0 w-70 h-70 md:w-90 md:h-80 rounded-xl md:rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.15)] border-4 border-white/90 transition-all duration-700 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] opacity-0 translate-y-10 scale-90 group-hover:opacity-100 group-hover:scale-100 ${hoverTranslations[i]} ${hoverRotations[i]}`}
+                        style={{
+                          transitionDelay: `${i * 100}ms`,
+                          zIndex: 0
+                        }}
                       >
-                        <Github size={18} />
-                      </a>
-                      <a
-                        href={project.link2}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="p-2 bg-black/5 rounded-full text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-black/10 transition-colors"
-                      >
-                        <ArrowUpRight size={18} />
-                      </a>
+                        <img
+                          src={img}
+                          alt={`${project.title} preview ${i + 1}`}
+                          className="w-full h-full object-cover object-top"
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+
+              <div className="relative z-10 bg-white/60 backdrop-blur-sm rounded-[2rem] p-8 md:p-10 border border-brand-charcoal/10 hover:border-brand-charcoal/20 transition-all duration-500 shadow-sm">
+                <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-10">
+                  <div className="flex-grow">
+                    <div className="flex justify-between items-start mb-4">
+                      <h4 className="font-sans text-2xl md:text-3xl font-bold text-brand-charcoal tracking-wide group-hover:text-brand-accent transition-colors">
+                        {project.title}
+                      </h4>
+
+                      <div className="flex gap-3 md:hidden">
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="p-2 bg-black/5 rounded-full text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-black/10 transition-colors"
+                        >
+                          <Github size={18} />
+                        </a>
+                        <a
+                          href={project.link2}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="p-2 bg-black/5 rounded-full text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-black/10 transition-colors"
+                        >
+                          <ArrowUpRight size={18} />
+                        </a>
+                      </div>
+                    </div>
+
+                    <p className="text-brand-charcoal/70 text-base leading-relaxed mb-8 max-w-2xl">
+                      {project.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mt-auto">
+                      {project.technologies.map((tech, i) => (
+                        <span key={i} className="px-4 py-1.5 rounded-full bg-black/5 text-xs font-medium text-brand-charcoal/80 border border-black/5 hover:bg-black/10 transition-colors">
+                          {tech}
+                        </span>
+                      ))}
                     </div>
                   </div>
 
-                  <p className="text-brand-charcoal/70 text-base leading-relaxed mb-8 max-w-2xl">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {project.technologies.map((tech, i) => (
-                      <span key={i} className="px-4 py-1.5 rounded-full bg-black/5 text-xs font-medium text-brand-charcoal/80 border border-black/5 hover:bg-black/10 transition-colors">
-                        {tech}
-                      </span>
-                    ))}
+                  <div className="hidden md:flex gap-3 flex-shrink-0 items-start">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="p-3 bg-black/5 rounded-xl text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-black/10 transition-colors group-hover:scale-110 duration-300"
+                    >
+                      <Github size={20} />
+                    </a>
+                    <a
+                      href={project.link2}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="p-3 bg-black/5 rounded-xl text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-black/10 transition-colors group-hover:scale-110 duration-300"
+                    >
+                      <ArrowUpRight size={20} />
+                    </a>
                   </div>
-                </div>
-
-                <div className="hidden md:flex gap-3 flex-shrink-0 items-start">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-3 bg-black/5 rounded-xl text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-black/10 transition-colors group-hover:scale-110 duration-300"
-                  >
-                    <Github size={20} />
-                  </a>
-                  <a
-                    href={project.link2}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-3 bg-black/5 rounded-xl text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-black/10 transition-colors group-hover:scale-110 duration-300"
-                  >
-                    <ArrowUpRight size={20} />
-                  </a>
                 </div>
               </div>
             </ScrollReveal>
