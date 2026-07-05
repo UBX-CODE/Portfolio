@@ -26,7 +26,7 @@ const Projects: React.FC = () => {
           </a>
         </div>
 
-        <div className="flex flex-col gap-6 max-w-5xl mx-auto">
+        <div className="flex flex-col gap-36 max-w-5xl mx-auto">
           {RESUME_DATA.projects.map((project, index) => (
             <ScrollReveal
               key={index}

@@ -7,7 +7,7 @@ export const RESUME_DATA = {
   email: "ujjwalsharma1910@gmail.com",
   linkedin: "ujjawal-bhardwaj-643625372",
   github: "UBX-CODE",
-  about: "Results-driven Computer Science Engineering student passionate about building high-quality, scalable software solutions. Skilled in developing full-stack applications using Python, JavaScript, React.js, Node.js and MongoDB. Recognized for problem-solving abilities, innovation, and a strong foundation in object-oriented programming and cloud-based architectures.",
+  about: "Full Stack Developer with hands-on experience in React.js, Next.js, Node.js, Express.js, TypeScript, MongoDB, and PostgreSQL. Experienced in engineering REST APIs, authentication workflows, responsive interfaces, and end-to-end web applications. Applied Data Structures & Algorithms, Object-Oriented Programming, and database design across full-stack projects and production deployments",
   education: {
     degree: "Bachelor of Engineering in Computer Science & Engineering",
     school: "Arya College Of Engineering And It",
@@ -29,23 +29,16 @@ export const RESUME_DATA = {
       technologies: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "GraphQL"],
       link: "https://github.com/UBX-CODE/DevOS",
       link2: "https://dev-os-iota.vercel.app",
-      images: ["/Dashboard.png", "/LandingPage.png", "/Screenshot 2026-06-25 171601.png", "/Screenshot 2026-06-25 225046.png"]
+      images: ["/Dashboard.png", "/LandingPage.png"]
     },
     {
-      title: "ALLC",
-      type: "Smart Doctor Appointment Booking System",
-      description: "A web-based platform designed to streamline the process of booking doctor appointments. It connects patients with healthcare providers, allowing users to search for doctors, view their availability, and schedule appointments seamlessly.",
+      title: "MeetFlow",
+      type: "Video Conferencing App",
+      description: "MeetFlow is a modern real-time video conferencing and collaboration platform designed to make online meetings simple, fast, and interactive. Users can create instant meeting rooms, join existing meetings using unique room codes, preview their camera and microphone before joining, and communicate through real-time audio and video. Built with WebRTC and Socket.IO, MeetFlow will include features such as mic and camera controls, live chat, multi-user conferencing, screen sharing, participant management, and host controls for a seamless meeting experience.",
       technologies: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "MongoDB"],
-      link: "https://github.com/UBX-CODE/Allc",
-      link2: "https://asianllc.vercel.app/"
-    },
-    {
-      title: "Unirank",
-      type: "College Student Ranking Platform",
-      description: "A full-stack web app that ranks college students based on their coding and professional achievements by fetching real-time data from platforms like LeetCode using GraphQL. Features include live leaderboards and achievement uploads.",
-      technologies: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "GraphQL"],
-      link: "https://github.com/UBX-CODE/Unirank",
-      link2: "https://uni-rank.netlify.app"
+      link: "https://github.com/UBX-CODE/MeetFlow",
+      link2: "https://github.com/UBX-CODE/MeetFlow",
+      images: ["/heropage.png", "/3.png"]
     }
   ] as Project[],
   certifications: [
