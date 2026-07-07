@@ -37,7 +37,7 @@ export const RESUME_DATA = {
       description: "MeetFlow is a modern real-time video conferencing and collaboration platform designed to make online meetings simple, fast, and interactive. Users can create instant meeting rooms, join existing meetings using unique room codes, preview their camera and microphone before joining, and communicate through real-time audio and video. Built with WebRTC and Socket.IO, MeetFlow will include features such as mic and camera controls, live chat, multi-user conferencing, screen sharing, participant management, and host controls for a seamless meeting experience.",
       technologies: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "TypeScript", "PostgresSQL", "Socket.io", "WebRTC"],
       link: "https://github.com/UBX-CODE/MeetFlow",
-      link2: "https://github.com/UBX-CODE/MeetFlow",
+      link2: "https://meet-flow-six.vercel.app",
       images: ["/heropage.png", "/3.png"]
     }
   ] as Project[],
