@@ -1,63 +1,68 @@
-import React, { useState, useEffect } from 'react';
-import { Sun, Sparkles, Menu, X } from 'lucide-react';
+import React, { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { cn } from '@/lib/utils';
 
 const Navbar: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [activeTab, setActiveTab] = useState('Home');
 
   const navLinks = [
+    { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
-    { name: 'Project', href: '#projects' },
+    { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
   ];
 
   return (
     <>
-      {/* Desktop Centered Floating Nav */}
-      <div className="fixed top-6 left-0 right-0 z-50 hidden md:flex justify-center items-center gap-4 pointer-events-none">
-        <nav className={cn(
-          "pointer-events-auto flex items-center gap-1 px-2 py-2 rounded-full border border-black/5 bg-white/40 backdrop-blur-xl shadow-sm transition-all duration-300",
-          isScrolled ? "bg-white/80 border-black/10 shadow-md" : ""
-        )}>
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="group flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-brand-charcoal/60 hover:text-brand-charcoal hover:bg-black/5 transition-all duration-300"
-            >
-              <span>{link.name}</span>
+      <header className="absolute top-0 left-0 right-0 z-50 py-8 px-6 md:px-12 w-full">
+        <div className="container mx-auto flex justify-between items-center text-brand-charcoal max-w-[1600px]">
+          
+          {/* Logo */}
+          <div className="flex-1">
+            <a href="#home" className="text-xl md:text-2xl font-bold tracking-[0.15em] font-sans">
+              UB<span className="text-brand-orange">.</span>
             </a>
-          ))}
-        </nav>
+          </div>
 
-        {/* <button className="pointer-events-auto p-3 rounded-full border border-white/10 bg-black/20 backdrop-blur-xl text-gray-300 hover:text-white hover:bg-white/10 transition-all shadow-lg">
-          <Sun size={20} />
-        </button> */}
-      </div>
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex flex-1 justify-center gap-10">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setActiveTab(link.name)}
+                className="group flex flex-col items-center gap-2 text-[13px] font-semibold font-sans text-brand-charcoal hover:opacity-70 transition-opacity"
+              >
+                <span>{link.name}</span>
+                <span className={`w-1 h-1 rounded-full bg-brand-charcoal transition-opacity ${activeTab === link.name ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`}></span>
+              </a>
+            ))}
+          </nav>
 
-      {/* Mobile Nav (Hamburger) */}
-      <div className="fixed top-0 w-full z-50 md:hidden p-6 flex justify-between items-center pointer-events-none">
-        {/* Logo or Brand for mobile if needed, or just empty space to push hamburger right */}
-        <span className="pointer-events-auto font-bold text-xl tracking-tight text-brand-charcoal/80 backdrop-blur-sm px-2 rounded">UB</span>
-
-        <button
-          className="pointer-events-auto p-2 rounded-full bg-white/50 backdrop-blur-md border border-black/10 text-brand-charcoal"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
+          {/* Right Section */}
+          <div className="flex-1 flex justify-end items-center gap-8">
+            {/* <div className="hidden md:flex items-center gap-2 text-[13px] font-sans font-semibold">
+              <span>Remote, IN</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-charcoal"></span>
+            </div> */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="hidden lg:flex items-center gap-3 border border-brand-charcoal/20 px-6 py-2.5 rounded-full hover:bg-brand-charcoal hover:text-brand-light transition-colors duration-300"
+            >
+              <Menu size={16} />
+              <span className="text-[11px] font-sans font-bold tracking-widest uppercase">Menu</span>
+            </button>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="lg:hidden text-brand-charcoal"
+            >
+               {isOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
+        </div>
+      </header>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
@@ -66,17 +71,16 @@ const Navbar: React.FC = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-brand-light/95 backdrop-blur-xl pt-24 px-6 md:hidden"
+            className="fixed inset-0 z-40 bg-brand-light/98 backdrop-blur-xl pt-32 px-6 lg:hidden"
           >
-            <div className="flex flex-col space-y-6">
+            <div className="flex flex-col space-y-10 items-center mt-12">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-4 text-2xl font-medium text-brand-charcoal/80 hover:text-brand-charcoal transition-colors"
+                  className="text-4xl font-sans font-medium text-brand-charcoal hover:text-brand-orange transition-colors"
                 >
-                  
                   {link.name}
                 </a>
               ))}

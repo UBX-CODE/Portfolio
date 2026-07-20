@@ -265,4 +265,3 @@ const floatingIcons = [
 ];
 
 export default Skills;
-
