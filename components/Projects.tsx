@@ -6,7 +6,7 @@ import { ScrollReveal } from './ui/ScrollReveal';
 const Projects: React.FC = () => {
   return (
     <section id="projects" className="py-24 relative bg-brand-light overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
+      <div className="container mx-auto px-6 relative z-10 max-w-[1200px]">
         
         {/* Title Area */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 md:mb-32 border-b border-brand-charcoal/10 pb-6 gap-4">
@@ -43,13 +43,16 @@ const Projects: React.FC = () => {
                   
                   <div className="mb-10">
                     <h4 className="text-[10px] font-sans tracking-[0.2em] uppercase text-brand-charcoal/40 mb-4 border-b border-brand-charcoal/10 pb-2 inline-block">Technologies</h4>
-                    <ul className="flex flex-col gap-2">
+                    <div className="flex gap-2">
                       {project.technologies.map((tech, i) => (
-                        <li key={i} className="font-sans text-[11px] tracking-widest uppercase text-brand-charcoal/80 flex items-center gap-2">
+                        <span
+                          key={i}
+                          className="font-sans text-[10px] tracking-widest uppercase text-brand-charcoal/70 px-3 py-1"
+                        >
                           {tech}
-                        </li>
+                        </span>
                       ))}
-                    </ul>
+                    </div>
                   </div>
 
                   <div className="flex gap-6">
@@ -74,12 +77,12 @@ const Projects: React.FC = () => {
                   </span>
                 </div>
 
-                <ScrollReveal direction="right" distance={36} className="relative z-10 w-full aspect-[5/3] group bg-black/0 p-4 md:p-7 rounded-[20px]">
+                <ScrollReveal direction="right" distance={36} className="relative z-10 w-full aspect-[6/3] bg-black/0 p-4 md:p-0">
                   {project.images && project.images.length > 0 ? (
                     <img
                       src={project.images[0]}
                       alt={project.title}
-                      className="w-full h-full object-cover rounded-[20px] shadow-sm md:shadow-2xl object-top grayscale-[30%] group-hover:grayscale-0 transition-all duration-1000 ease-out scale-100 group-hover:scale-105"
+                      className="w-full h-full object-cover shadow-sm md:shadow-2xl grayscale-[30%] transition-all duration-1000 ease-out scale-100 group-hover:scale-105"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center font-playfair italic text-brand-charcoal/20 text-2xl border border-brand-charcoal/10">
