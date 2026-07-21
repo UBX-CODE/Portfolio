@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
         {/* Foreground Character Image */}
         <motion.div 
           style={{ y: y1 }}
-          className="relative z-10 w-[90%] md:w-[500px] max-w-[600px] flex justify-center items-end bottom-0 pb-16"
+          className="relative z-10 w-[90%] md:w-[425px] max-w-[600px] flex justify-center items-end bottom-0 pb-16"
         >
           <img 
             src="/me4.png" 
