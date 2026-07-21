@@ -15,7 +15,7 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   children, 
   className = "", 
   direction = 'up',
-  distance = 50,
+  distance = 45,
   scaleStart = 1,
 }) => {
   const ref = useRef<HTMLDivElement>(null);

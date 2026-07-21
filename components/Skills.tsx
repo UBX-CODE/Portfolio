@@ -1,94 +1,210 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Boxes, Binary, Database, LayoutGrid, Network } from 'lucide-react';
 import { RESUME_DATA } from '../data';
 import { SkillCategory } from '../types';
-import { LogoCloud } from '@/components/ui/logo-cloud-3';
 import { TextReveal } from './ui/TextReveal';
 
-const SkillCard: React.FC<{ 
-  skillGroup: SkillCategory, 
-  index: number, 
-  colSpan: string, 
-  borderRadius: string 
-}> = ({ 
-  skillGroup, 
-  index, 
-  colSpan, 
-  borderRadius 
-}) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 95%", "center center"]
-  });
+type SkillIcon = {
+  src?: string;
+  invert?: boolean;
+  LucideIcon?: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+};
 
-  const y = useTransform(scrollYProgress, [0, 1], [60, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+const SKILL_ICONS: Record<string, SkillIcon> = {
+  Java: { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+  Python: { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+  SQL: { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+  JavaScript: { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+  TypeScript: { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+  'Next.js': { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', invert: true },
+  'React.js': { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+  'Node.js': { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+  'Express.js': { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', invert: true },
+  HTML: { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+  CSS: { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+  'Tailwind CSS': { src: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg' },
+  MySQL: { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+  MongoDB: { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+  Firebase: { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg' },
+  PostgreSQL: { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+  'AWS (Basics)': { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg', invert: true },
+  'Git/GitHub': { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', invert: true },
+  Postman: { src: 'https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg' },
+  'VS Code': { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
+  Linux: { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg' },
+  OOP: { LucideIcon: Boxes },
+  DSA: { LucideIcon: Binary },
+  'System Design': { LucideIcon: LayoutGrid },
+  DBMS: { LucideIcon: Database },
+  'Computer Networks': { LucideIcon: Network },
+};
+
+const POPUP_POSITIONS = [
+  { top: '-14%', left: '6%', rotate: -14 },
+  { top: '-20%', left: '50%', rotate: 0, centerX: true },
+  { top: '-14%', right: '6%', rotate: 14 },
+  { top: '42%', left: '-12%', rotate: -10 },
+  { top: '42%', right: '-12%', rotate: 10 },
+  { bottom: '-14%', left: '18%', rotate: -8 },
+  { bottom: '-14%', right: '18%', rotate: 8 },
+];
+
+const SkillPopupIcon: React.FC<{ item: string; index: number }> = ({ item, index }) => {
+  const icon = SKILL_ICONS[item];
+  if (!icon) return null;
+
+  const pos = POPUP_POSITIONS[index % POPUP_POSITIONS.length];
+  const { centerX, rotate, ...positionStyles } = pos;
 
   return (
     <motion.div
-      ref={ref}
-      style={{ y, opacity }}
-      className={`
-        ${colSpan} ${borderRadius}
-        bg-white/40 backdrop-blur-xl p-8 md:p-10
-        border border-brand-charcoal/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)]
-        hover:bg-white hover:border-brand-accent/30 hover:shadow-2xl hover:-translate-y-2
-        transition-all duration-500 ease-out group
-      `}
+      variants={{
+        rest: {
+          opacity: 0,
+          scale: 0.35,
+          y: 16,
+          x: centerX ? '-50%' : 0,
+          rotate: rotate * 0.5,
+        },
+        hover: {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          x: centerX ? '-50%' : 0,
+          rotate,
+          transition: {
+            type: 'spring',
+            stiffness: 380,
+            damping: 22,
+            delay: index * 0.06,
+          },
+        },
+      }}
+      style={{
+        position: 'absolute',
+        ...positionStyles,
+        zIndex: 20,
+      }}
+      className="pointer-events-none"
     >
-      <div className="flex items-center justify-between mb-8 pb-6 border-b border-brand-charcoal/10 group-hover:border-brand-accent/20 transition-colors duration-500">
-        <h4 className="text-xl font-bold font-sans text-brand-charcoal transition-colors duration-500">
-          {skillGroup.category}
-        </h4>
-        <span className="text-brand-charcoal/10 group-hover:text-brand-accent/20 font-sans text-4xl font-light transition-colors duration-500">
-          0{index + 1}
-        </span>
-      </div>
-      
-      <div className="flex flex-wrap gap-3">
-        {skillGroup.items.map((item, idx) => {
-          // Stagger pills based on scroll progress
-          const start = idx / skillGroup.items.length;
-          const end = start + (1 / skillGroup.items.length);
-          // Use useTransform conditionally inside loop is a violation of rules of hooks, 
-          // but since the length is static, it's technically safe. 
-          // To be perfectly safe, we map at the top level or just use the same hook.
-          // Wait, calling hooks inside map is generally bad practice in React.
-          // Let's create a sub-component for Pill to obey hooks rules.
-          return <SkillPill key={idx} item={item} idx={idx} total={skillGroup.items.length} scrollYProgress={scrollYProgress} />;
-        })}
-      </div>
+      {icon.src ? (
+        <img
+          src={icon.src}
+          alt={item}
+          className="h-10 w-10 object-contain drop-shadow-md md:h-12 md:w-12"
+          style={icon.invert ? { filter: 'invert(1)' } : undefined}
+        />
+      ) : icon.LucideIcon ? (
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-brand-charcoal/10 bg-white shadow-md md:h-12 md:w-12">
+          <icon.LucideIcon className="h-5 w-5 text-brand-charcoal md:h-6 md:w-6" strokeWidth={1.5} />
+        </div>
+      ) : null}
     </motion.div>
   );
 };
 
-const SkillPill = ({ item, idx, total, scrollYProgress }: any) => {
-  const start = idx / total;
-  const end = start + (1 / total);
-  
-  const scale = useTransform(scrollYProgress, [start, end], [0.8, 1]);
-  const opacity = useTransform(scrollYProgress, [start, end], [0, 1]);
-  const y = useTransform(scrollYProgress, [start, end], [10, 0]);
+const SkillCard: React.FC<{
+  skillGroup: SkillCategory;
+  index: number;
+  colSpan: string;
+  borderRadius: string;
+}> = ({ skillGroup, index, colSpan, borderRadius }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start 95%', 'center center'],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [54, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <motion.div 
-      style={{ scale, opacity, y }}
-      className="flex items-center gap-2 px-4 py-2 rounded-full border border-brand-charcoal/5 bg-white/50 group-hover:bg-brand-light/50 group/item hover:!bg-brand-accent hover:!border-brand-accent transition-all duration-300"
+    <motion.div ref={ref} style={{ y, opacity }} className={`${colSpan} relative`}>
+      <motion.div
+        className="relative"
+        initial="rest"
+        whileHover="hover"
+        animate="rest"
+      >
+        {/* Hover popup logos */}
+        {skillGroup.items.map((item, idx) => (
+          <SkillPopupIcon key={item} item={item} index={idx} />
+        ))}
+
+        {/* Card */}
+        <motion.div
+          variants={{
+            rest: {
+              boxShadow: '0 8px 30px rgb(0 0 0 / 0.06)',
+              borderColor: 'rgb(26 26 26 / 0.05)',
+            },
+            hover: {
+              boxShadow: '0 20px 50px rgb(0 0 0 / 0.1)',
+              borderColor: 'rgb(140 130 115 / 0.2)',
+            },
+          }}
+          className={`
+            ${borderRadius}
+            relative z-10 border bg-white p-8 md:p-10
+            transition-colors duration-500 ease-out
+          `}
+        >
+          <div className="mb-8 flex items-center justify-between border-b border-brand-charcoal/10 pb-6">
+            <h4 className="font-sans text-xl font-bold text-brand-charcoal">{skillGroup.category}</h4>
+            <span className="font-sans text-4xl font-light text-brand-charcoal/10">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            {skillGroup.items.map((item, idx) => (
+              <SkillPill
+                item={item}
+                idx={idx}
+                total={skillGroup.items.length}
+                scrollYProgress={scrollYProgress}
+              />
+            ))}
+          </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const SkillPill = ({
+  item,
+  idx,
+  total,
+  scrollYProgress,
+}: {
+  item: string;
+  idx: number;
+  total: number;
+  scrollYProgress: ReturnType<typeof useScroll>['scrollYProgress'];
+}) => {
+  const start = idx / total;
+  const end = start + 1 / total;
+
+  const scale = useTransform(scrollYProgress, [start, end], [0.8, 1]);
+  const opacity = useTransform(scrollYProgress, [start, end], [0, 1]);
+  const pillY = useTransform(scrollYProgress, [start, end], [9, 0]);
+
+  return (
+    <motion.div
+      style={{ scale, opacity, y: pillY }}
+      className="rounded-full border border-brand-charcoal/5 bg-brand-charcoal/[0.04] px-4 py-2"
     >
-      <span className="text-brand-charcoal/70 font-sans text-sm font-medium group-hover/item:!text-brand-light transition-colors duration-300">
-        {item}
-      </span>
+      <span className="font-sans text-sm font-medium text-brand-charcoal/70">{item}</span>
     </motion.div>
   );
 };
 
 const Skills: React.FC = () => {
   return (
-    <section id="skills" className="py-24 overflow-hidden relative">
-      {/* Subtle Grid Pattern */}
-      <div className="absolute inset-0 z-0 pointer-events-none bg-[linear-gradient(to_right,#8c827315_1px,transparent_1px),linear-gradient(to_bottom,#8c827315_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
-
+    <section id="skills" className="relative overflow-hidden py-24">
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(to_right,#8c827315_1px,transparent_1px),linear-gradient(to_bottom,#8c827315_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
       {/* Floating Background Icons */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {floatingIcons.map((item, i) => (
@@ -119,41 +235,23 @@ const Skills: React.FC = () => {
           />
         ))}
       </div>
-
-      <div className="container mx-auto px-6 mb-16 text-center relative z-10 flex flex-col items-center">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-brand-charcoal/60 font-bold tracking-widest uppercase text-sm mb-3 font-sans"
-        >
-          My Expertise
-        </motion.h2>
-        <div className="flex justify-center items-center gap-3 text-4xl md:text-5xl font-playfair text-brand-charcoal">
+      <div className="container relative z-10 mx-auto mb-16 flex flex-col items-center px-6 text-center">
+        <div className="flex items-center justify-center gap-3 text-4xl font-playfair text-brand-charcoal md:text-5xl">
           <TextReveal text="Technical" delay={0.1} />
           <TextReveal text="Skills" wordClassName="italic text-brand-accent" delay={0.3} />
         </div>
       </div>
 
-      {/* Infinite Marquee Section */}
-      <div className="mb-24 relative z-10">
-        <LogoCloud logos={logos} />
-      </div>
-
-      {/* Detailed Cards Grid */}
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
+      <div className="container relative z-10 mx-auto px-6">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-16 md:grid-cols-2 lg:grid-cols-6">
           {RESUME_DATA.skills.map((skillGroup, index) => {
-            // Determine column span for 3-2 grid layout
             const colSpan = index < 3 ? 'lg:col-span-2' : 'lg:col-span-3';
-            // Alternate border radius for unique shapes
-            const borderRadius = index % 2 === 0 
-              ? 'rounded-[2rem] rounded-tr-[4rem]' 
-              : 'rounded-[2rem] rounded-bl-[4rem]';
-            
+            const borderRadius =
+              index % 2 === 0 ? 'rounded-[2rem] rounded-tr-[4rem]' : 'rounded-[2rem] rounded-bl-[4rem]';
+
             return (
-              <SkillCard 
-                key={index}
+              <SkillCard
+                key={skillGroup.category}
                 skillGroup={skillGroup}
                 index={index}
                 colSpan={colSpan}
@@ -166,86 +264,6 @@ const Skills: React.FC = () => {
     </section>
   );
 };
-
-const logos = [
-  {
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
-    alt: "Java",
-  },
-  {
-    src: "https://www.vectorlogo.zone/logos/netlify/netlify-icon.svg",
-    alt: "Netlify",
-  },
-  {
-    src: "https://devicon-website.vercel.app/api/nextjs/original.svg?color=%23FFFFFF",
-    alt: "Next.js",
-  },
-  {
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
-    alt: "Figma",
-  },
-  {
-    src: "https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg",
-    alt: "GSAP",
-  },
-  {
-    src: "https://www.vectorlogo.zone/logos/framer/framer-icon.svg",
-    alt: "Framer Motion",
-  },
-  {
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-    alt: "Python",
-  },
-  {
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-    alt: "JavaScript",
-  },
-  {
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-    alt: "CSS",
-  },
-  {
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-    alt: "HTML",
-  },
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
-    alt: "Tailwind CSS",
-  },
-  {
-    src: "https://devicon-website.vercel.app/api/github/original.svg?color=%23FFFFFF",
-    alt: "GitHub",
-  },
-  {
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-    alt: "React.js",
-  },
-  {
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-    alt: "Node.js",
-  },
-  {
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-    alt: "MongoDB",
-  },
-  {
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
-    alt: "MySQL",
-  },
-  {
-    src: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg",
-    alt: "Postman",
-  },
-  {
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
-    alt: "Firebase",
-  },
-  {
-    src: "https://devicon-website.vercel.app/api/express/original.svg?color=%23F9F9F9",
-    alt: "Express.js",
-  },
-];
-
 const floatingIcons = [
   { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", x: "5%", y: "10%", size: 80 },
   { icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", x: "90%", y: "20%", size: 90 },

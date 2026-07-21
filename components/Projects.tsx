@@ -36,7 +36,7 @@ const Projects: React.FC = () => {
                   </h3>
                 </div>
 
-                <ScrollReveal direction="left" distance={30} className="md:pl-20">
+                <ScrollReveal direction="left" distance={27} className="md:pl-20">
                   <p className="font-serif text-[15px] leading-relaxed text-brand-charcoal/80 mb-10 border-l border-brand-charcoal/30 pl-6 text-justify">
                     {project.description}
                   </p>
@@ -46,7 +46,6 @@ const Projects: React.FC = () => {
                     <ul className="flex flex-col gap-2">
                       {project.technologies.map((tech, i) => (
                         <li key={i} className="font-sans text-[11px] tracking-widest uppercase text-brand-charcoal/80 flex items-center gap-2">
-                          <span className="w-1 h-1 bg-brand-red rounded-full"></span>
                           {tech}
                         </li>
                       ))}
@@ -75,7 +74,7 @@ const Projects: React.FC = () => {
                   </span>
                 </div>
 
-                <ScrollReveal direction="right" distance={40} className="relative z-10 w-full aspect-[5/3] group bg-black/0 p-4 md:p-7 rounded-[20px]">
+                <ScrollReveal direction="right" distance={36} className="relative z-10 w-full aspect-[5/3] group bg-black/0 p-4 md:p-7 rounded-[20px]">
                   {project.images && project.images.length > 0 ? (
                     <img
                       src={project.images[0]}

@@ -22,7 +22,7 @@ const About: React.FC = () => {
         <div className="md:w-3/4 flex flex-col">
           <ScrollReveal 
             direction="up"
-            distance={40}
+            distance={36}
             className="space-y-12"
           >
             <h3 className="text-2xl md:text-4xl lg:text-5xl font-sans font-medium leading-[1.3] text-brand-charcoal tracking-tight max-w-4xl">
