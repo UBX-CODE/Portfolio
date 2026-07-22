@@ -44,7 +44,7 @@ export const RESUME_DATA = {
       title: "Commitra",
       type: "Operating System",
       description: "Commitra — An agentic AI-powered CLI that analyzes Git diffs, understands code changes, and generates meaningful, context-aware commits.",
-      technologies: ["Python"],
+      technologies: ["Python", "Typer", "GroqAPI", "GitCLI"],
       link: "https://github.com/UBX-CODE/Commitra",
       link2: "https://github.com/UBX-CODE/Commitra",
       images: [ "/Commitra.jpeg"]
