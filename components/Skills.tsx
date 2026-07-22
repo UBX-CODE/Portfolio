@@ -184,8 +184,9 @@ const SkillPill = ({
   total: number;
   scrollYProgress: ReturnType<typeof useScroll>['scrollYProgress'];
 }) => {
-  const start = idx / total;
-  const end = start + 1 / total;
+  const animationEnd = 0.6;
+  const start = (idx / total) * animationEnd;
+  const end = start + (1 / total) * animationEnd;
 
   const scale = useTransform(scrollYProgress, [start, end], [0.8, 1]);
   const opacity = useTransform(scrollYProgress, [start, end], [0, 1]);
