@@ -27,7 +27,7 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
           
           <div className="mb-10">
             <h4 className="text-[10px] font-sans tracking-[0.2em] uppercase text-brand-charcoal/40 mb-4 border-b border-brand-charcoal/10 pb-2 inline-block">Technologies</h4>
-            <div className=" gap-2">
+            <div className="flex gap-2 flex-wrap">
               {project.technologies.map((tech: string, i: number) => (
                 <span
                   key={i}
@@ -67,7 +67,7 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
               <img
                 src={project.images[0]}
                 alt={project.title}
-                className="w-full h-full object-cover shadow-sm md:shadow-2xl grayscale-[30%] transition-all duration-1000 ease-out scale-100 group-hover:scale-105"
+                className="w-full h-full object-cover shadow-sm md:shadow-2xl transition-all duration-1000 ease-out scale-100 group-hover:scale-105"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center font-playfair italic text-brand-charcoal/20 text-2xl border border-brand-charcoal/10">

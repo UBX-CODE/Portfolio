@@ -25,7 +25,7 @@ export const RESUME_DATA = {
         {
       title: "MeetFlow",
       type: "Video Conferencing App",
-      description: "MeetFlow is a modern real-time video conferencing and collaboration platform designed to make online meetings simple, fast, and interactive. Users can create instant meeting rooms, join existing meetings using unique room codes, preview their camera and microphone before joining, and communicate through real-time audio and video. Built with WebRTC and Socket.IO, MeetFlow will include features such as mic and camera controls, live chat, multi-user conferencing, screen sharing, participant management, and host controls for a seamless meeting experience.",
+      description: "MeetFlow is a real-time video conferencing platform built with WebRTC and Socket.IO. It enables users to create and join meetings, preview audio and video before joining, and collaborate with features like live chat, screen sharing, participant management, and host controls.",
       technologies: ["React.js", "TailwindCSS", "Node.js", "Express.js", "TypeScript", "PostgresSQL", "Socket.io", "WebRTC"],
       link: "https://github.com/UBX-CODE/MeetFlow",
       link2: "https://meet-flow-six.vercel.app",
@@ -34,12 +34,30 @@ export const RESUME_DATA = {
     {
       title: "DevOS",
       type: "Operating System",
-      description: "DevOS is a modern full-stack developer productivity platform that combines project management, visual workflow design, and developer tooling into a single collaborative workspace. It provides Kanban-based task management, an interactive infinite workflow editor powered by React Flow, secure Google OAuth and JWT authentication, GitHub integration, and LeetCode profile analytics using GraphQL. Built with the MERN stack and TypeScript, DevOS focuses on delivering a scalable and intuitive development experience through modular architecture, secure backend APIs, and responsive UI design. The platform is evolving into an all-in-one developer operating system with advanced capabilities including multiple workflow management, AI-powered workflow generation, workflow templates, real-time collaboration, version control, and intelligent planning tools for software teams and individual developers.",
+      description: "DevOS is a full-stack developer productivity platform built with the MERN stack and TypeScript. It features Kanban task management, an infinite React Flow canvas, Google OAuth, GitHub integration, LeetCode analytics, and AI-powered workflows.",
       technologies: ["React.js", "TailwindCSS", "Node.js", "Express.js", "MongoDB", "GraphQL"],
       link: "https://github.com/UBX-CODE/DevOS",
       link2: "https://dev-os-iota.vercel.app",
       images: [ "/LandingPage.png","/Dashboard.png"]
     },
+    {
+      title: "Commitra",
+      type: "Operating System",
+      description: "Commitra — An agentic AI-powered CLI that analyzes Git diffs, understands code changes, and generates meaningful, context-aware commits.",
+      technologies: ["Python"],
+      link: "https://github.com/UBX-CODE/Commitra",
+      link2: "https://github.com/UBX-CODE/Commitra",
+      images: [ "/Commitra.jpeg"]
+    },
+    {
+      title: "Bac-Prac",
+      type: "Operating System",
+      description: "A collection of backend microservices and full-stack projects built with Node.js, Express, MongoDB, and Redis to practice modern system design, web sockets, and backend engineering.",
+      technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Redis"],
+      link: "https://github.com/UBX-CODE/Backend-Prac",
+      link2: "https://github.com/UBX-CODE/Backend-Prac",
+      images: [ "/Backend.jpeg"]
+    }
 
   ] as Project[],
   certifications: [
