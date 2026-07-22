@@ -1,13 +1,32 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { RESUME_DATA } from '../data';
 import { ScrollReveal } from './ui/ScrollReveal';
 
 const About: React.FC = () => {
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const bgY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["5%", "-5%"]);
+
   return (
-    <section id="about" className="py-32 md:py-48 relative bg-brand-light text-brand-charcoal overflow-hidden">
+    <section ref={containerRef} id="about" className="py-32 md:py-48 relative bg-brand-light text-brand-charcoal overflow-hidden">
       
-      <div className="container mx-auto px-6 md:px-12 relative z-10 max-w-[1600px] flex flex-col md:flex-row gap-12 md:gap-32">
+      {/* Parallax Background Text */}
+      <motion.div 
+        style={{ y: bgY }}
+        className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none opacity-5"
+      >
+        <span className="text-[25vw] font-sans font-black tracking-tighter whitespace-nowrap">
+          ARTISAN
+        </span>
+      </motion.div>
+
+      <motion.div style={{ y: contentY }} className="container mx-auto px-6 md:px-12 relative z-10 max-w-[1600px] flex flex-col md:flex-row gap-12 md:gap-32">
         
         {/* Left Side: Title */}
         <div className="md:w-1/4 flex flex-col justify-start pt-2">
@@ -47,7 +66,7 @@ const About: React.FC = () => {
           </ScrollReveal>
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 };

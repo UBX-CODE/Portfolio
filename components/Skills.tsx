@@ -96,7 +96,7 @@ const SkillPopupIcon: React.FC<{ item: string; index: number }> = ({ item, index
           style={icon.invert ? { filter: 'invert(1)' } : undefined}
         />
       ) : icon.LucideIcon ? (
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-brand-charcoal/10 bg-white shadow-md md:h-12 md:w-12">
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-brand-charcoal/10 bg-brand-light shadow-md md:h-12 md:w-12">
           <icon.LucideIcon className="h-5 w-5 text-brand-charcoal md:h-6 md:w-6" strokeWidth={1.5} />
         </div>
       ) : null}
@@ -113,11 +113,11 @@ const SkillCard: React.FC<{
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start 95%', 'center center'],
+    offset: ['start end', 'end start'],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [54, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [100 + (index % 3) * 40, -100 - (index % 3) * 40]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
 
   return (
     <motion.div ref={ref} style={{ y, opacity }} className={`${colSpan} relative`}>
@@ -146,7 +146,7 @@ const SkillCard: React.FC<{
           }}
           className={`
             ${borderRadius}
-            relative z-10 border bg-white p-8 md:p-10
+            relative z-10 border bg-brand-light p-8 md:p-10
             transition-colors duration-500 ease-out
           `}
         >
@@ -236,9 +236,9 @@ const Skills: React.FC = () => {
         ))}
       </div>
       <div className="container relative z-10 mx-auto mb-16 flex flex-col items-center px-6 text-center">
-        <div className="flex items-center justify-center gap-3 text-4xl font-playfair text-brand-charcoal md:text-5xl">
+        <div className="flex items-center justify-center tracking-[0.1em] gap-3 text-4xl font-sans text-brand-charcoal/70 md:text-5xl">
           <TextReveal text="Technical" delay={0.1} />
-          <TextReveal text="Skills" wordClassName="italic text-brand-accent" delay={0.3} />
+          <TextReveal text="Skills" delay={0.3} />
         </div>
       </div>
 

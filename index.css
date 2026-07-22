@@ -30,7 +30,7 @@ html.lenis, html.lenis body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #F5F4F0; /* brand-light */
+  background: rgba(var(--brand-light), 1);
   z-index: 9999;
 }
 
@@ -50,7 +50,7 @@ html.lenis, html.lenis body {
 .loading-text span {
   display: inline-block;
   margin: 0 5px;
-  color: #1F1F1F; /* brand-charcoal */
+  color: rgba(var(--brand-charcoal), 1);
   font-family: 'Playfair Display', serif;
   font-size: 24px;
   letter-spacing: 4px;
@@ -77,14 +77,14 @@ html.lenis, html.lenis body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #F5F4F0; /* brand-light */
+  background: rgba(var(--brand-light), 1);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #8C8273; /* brand-accent */
+  background: rgba(var(--brand-accent), 1);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #1F1F1F; /* brand-charcoal */
+  background: rgba(var(--brand-charcoal), 1);
 }

@@ -45,7 +45,13 @@ const Contact: React.FC = () => {
     target: headingRef,
     offset: ['start 90%', 'center center'],
   });
+  const { scrollYProgress: parallaxProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+  
   const headingY = useTransform(headingProgress, [0, 1], [36, 0]);
+  const headingParallax = useTransform(parallaxProgress, [0, 1], ["-15%", "15%"]);
   const headingOpacity = useTransform(headingProgress, [0, 1], [0, 1]);
 
   /* CTA card reveal */
@@ -79,18 +85,20 @@ const Contact: React.FC = () => {
         </div>
 
         {/* ── Hero headline ── */}
-        <motion.div
-          ref={headingRef}
-          style={{ y: headingY, opacity: headingOpacity }}
-          className="mb-16 md:mb-24"
-        >
-          <div className="flex flex-wrap items-end gap-x-4 gap-y-2 font-playfair text-[13vw] md:text-[8rem] lg:text-[9.5rem] leading-[0.88] tracking-tight text-brand-charcoal">
-            <span>Let's</span>
-            <span className="italic text-brand-accent">Work</span>
-          </div>
-          <div className="flex flex-wrap items-end gap-x-4 gap-y-2 font-playfair text-[13vw] md:text-[8rem] lg:text-[9.5rem] leading-[0.88] tracking-tight text-brand-charcoal">
-            <span>Together</span>
-          </div>
+        <motion.div style={{ y: headingParallax }}>
+          <motion.div
+            ref={headingRef}
+            style={{ y: headingY, opacity: headingOpacity }}
+            className="mb-16 md:mb-24"
+          >
+            <div className="flex flex-wrap items-end gap-x-4 gap-y-2 font-playfair text-[13vw] md:text-[8rem] lg:text-[9.5rem] leading-[0.88] tracking-tight text-brand-charcoal">
+              <span>Let's</span>
+              <span className="italic text-brand-accent">Work</span>
+            </div>
+            <div className="flex flex-wrap items-end gap-x-4 gap-y-2 font-playfair text-[13vw] md:text-[8rem] lg:text-[9.5rem] leading-[0.88] tracking-tight text-brand-charcoal">
+              <span>Together</span>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* ── Divider ── */}

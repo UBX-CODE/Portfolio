@@ -1,10 +1,27 @@
-import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('Home');
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (document.documentElement.classList.contains('dark')) {
+      setIsDarkMode(true);
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    if (isDarkMode) {
+      document.documentElement.classList.remove('dark');
+      setIsDarkMode(false);
+    } else {
+      document.documentElement.classList.add('dark');
+      setIsDarkMode(true);
+    }
+  };
 
   const navLinks = [
     { name: 'Home', href: '#home' },
@@ -22,7 +39,7 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <div className="flex-1">
             <a href="#home" className="text-xl md:text-2xl font-bold tracking-[0.15em] font-sans">
-              UB<span className="text-brand-orange">.</span>
+              UBX
             </a>
           </div>
 
@@ -36,20 +53,22 @@ const Navbar: React.FC = () => {
                 className="group flex flex-col items-center gap-2 text-[13px] font-semibold font-sans text-brand-charcoal hover:opacity-70 transition-opacity"
               >
                 <span>{link.name}</span>
-                <span className={`w-1 h-1 rounded-full bg-brand-charcoal transition-opacity ${activeTab === link.name ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`}></span>
               </a>
             ))}
           </nav>
 
           {/* Right Section */}
-          <div className="flex-1 flex justify-end items-center gap-8">
-            {/* <div className="hidden md:flex items-center gap-2 text-[13px] font-sans font-semibold">
-              <span>Remote, IN</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-charcoal"></span>
-            </div> */}
+          <div className="flex-1 flex justify-end items-center gap-6 md:gap-8">
+            <button
+              onClick={toggleTheme}
+              className="flex items-center justify-center w-10 h-10 rounded-full border border-brand-charcoal/20 text-brand-charcoal hover:bg-brand-charcoal hover:text-brand-light transition-colors duration-300"
+              aria-label="Toggle Theme"
+            >
+              {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="hidden lg:flex items-center gap-3 border border-brand-charcoal/20 px-6 py-2.5 rounded-full hover:bg-brand-charcoal hover:text-brand-light transition-colors duration-300"
+              className="hidden lg:flex md:opacity-0 items-center gap-3 border border-brand-charcoal/20 px-6 py-2.5 rounded-full hover:bg-brand-charcoal hover:text-brand-light transition-colors duration-300"
             >
               <Menu size={16} />
               <span className="text-[11px] font-sans font-bold tracking-widest uppercase">Menu</span>

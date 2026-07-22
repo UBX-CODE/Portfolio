@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
           style={{ y: textY }}
           className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden pb-10"
         >
-          <span className="text-[20vw] font-sans font-black text-black/[0.04] tracking-tighter leading-none translate-y-10">
+          <span className="text-[20vw] font-sans font-black text-brand-charcoal/[0.04] tracking-tighter leading-none translate-y-10">
             UJJAWAL
           </span>
         </motion.div>
@@ -31,7 +31,16 @@ const Hero: React.FC = () => {
           <img 
             src="/me4.png" 
             alt="Ujjawal" 
-            className="w-full h-auto object-cover object-top grayscale mix-blend-multiply"
+            className="w-full aspect-[784/1172] object-cover object-top grayscale mix-blend-multiply dark:hidden"
+            style={{ 
+              maskImage: 'linear-gradient(to bottom, rgba(184, 177, 177, 1) 50%, rgba(0,0,0,0) 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)' 
+            }}
+          />
+          <img 
+            src="/img6.png" 
+            alt="Ujjawal Dark" 
+            className="w-full md:h-130 object-cover object-top grayscale hidden dark:block"
             style={{ 
               maskImage: 'linear-gradient(to bottom, rgba(184, 177, 177, 1) 50%, rgba(0,0,0,0) 100%)',
               WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)' 
