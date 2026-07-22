@@ -56,7 +56,7 @@ export const RESUME_DATA = {
       technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Redis"],
       link: "https://github.com/UBX-CODE/Backend-Prac",
       link2: "https://github.com/UBX-CODE/Backend-Prac",
-      images: [ "/Backend.jpeg"]
+      images: [ "/Backend.JPG"]
     }
 
   ] as Project[],
