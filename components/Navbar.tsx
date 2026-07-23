@@ -33,7 +33,12 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <header className="absolute top-0 left-0 right-0 z-50 py-8 px-6 md:px-12 w-full">
+      <motion.header 
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute top-0 left-0 right-0 z-50 py-8 px-6 md:px-12 w-full"
+      >
         <div className="container mx-auto flex justify-between items-center text-brand-charcoal max-w-[1600px]">
           
           {/* Logo */}
@@ -81,7 +86,7 @@ const Navbar: React.FC = () => {
             </button>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
