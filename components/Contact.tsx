@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import { SOCIAL_LINKS, PERSONAL_INFO } from '../constants';
 import { ArrowUpRight, MapPin } from 'lucide-react';
+import { FloatingPathsBackground } from './ui/floating-paths';
 
 /* ---------- Social Link Pill ---------- */
 const SocialPill: React.FC<{
@@ -49,7 +50,7 @@ const Contact: React.FC = () => {
     target: sectionRef,
     offset: ['start end', 'end start'],
   });
-  
+
   const headingY = useTransform(headingProgress, [0, 1], [36, 0]);
   const headingParallax = useTransform(parallaxProgress, [0, 1], ["-15%", "15%"]);
   const headingOpacity = useTransform(headingProgress, [0, 1], [0, 1]);
@@ -67,6 +68,22 @@ const Contact: React.FC = () => {
       ref={sectionRef}
       className="relative bg-brand-light py-24 md:py-40"
     >
+      {/* Floating animated paths — left side */}
+      {/* <FloatingPathsBackground
+        position={1}
+        className="absolute inset-0 z-0 opacity-40"
+      >
+        <></>
+      </FloatingPathsBackground> */}
+
+      {/* Floating animated paths — right side (mirrored) */}
+      <FloatingPathsBackground
+        position={-1}
+        className="absolute inset-0 z-0 opacity-20"
+      >
+        <></>
+      </FloatingPathsBackground>
+
       {/* Subtle dot/grid texture */}
       <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(to_right,#8c827315_1px,transparent_1px),linear-gradient(to_bottom,#8c827315_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,#000_60%,transparent_100%)]" />
 
