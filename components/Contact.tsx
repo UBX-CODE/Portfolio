@@ -108,11 +108,11 @@ const Contact: React.FC = () => {
             style={{ y: headingY, opacity: headingOpacity }}
             className="mb-16 md:mb-24"
           >
-            <div className="flex flex-wrap items-end gap-x-4 gap-y-2 font-playfair text-[13vw] md:text-[8rem] lg:text-[9.5rem] leading-[0.88] tracking-tight text-brand-charcoal">
+            <div className="flex flex-wrap items-end gap-x-4 gap-y-2 font-sans font-black uppercase text-[13vw] md:text-[8rem] lg:text-[9.5rem] leading-[0.88] tracking-tighter text-brand-charcoal">
               <span>Let's</span>
-              <span className="italic text-brand-accent">Work</span>
+              <span className="text-brand-accent">Work</span>
             </div>
-            <div className="flex flex-wrap items-end gap-x-4 gap-y-2 font-playfair text-[13vw] md:text-[8rem] lg:text-[9.5rem] leading-[0.88] tracking-tight text-brand-charcoal">
+            <div className="flex flex-wrap items-end gap-x-4 gap-y-2 font-sans font-black uppercase text-[13vw] md:text-[8rem] lg:text-[9.5rem] leading-[0.88] tracking-tighter text-brand-charcoal">
               <span>Together</span>
             </div>
           </motion.div>
