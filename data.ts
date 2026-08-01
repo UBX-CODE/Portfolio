@@ -23,12 +23,12 @@ export const RESUME_DATA = {
   ] as SkillCategory[],
   projects: [
         {
-      title: "MeetFlow",
+      title: "FrogMeet",
       type: "Video Conferencing App",
-      description: "MeetFlow is a real-time video conferencing platform built with WebRTC and Socket.IO. It enables users to create and join meetings, preview audio and video before joining, and collaborate with features like live chat, screen sharing, participant management, and host controls.",
+      description: "FrogMeet is a real-time video conferencing platform built with WebRTC and Socket.IO. It enables users to create and join meetings, preview audio and video before joining, and collaborate with features like live chat, screen sharing, participant management, and host controls.",
       technologies: ["React.js", "TailwindCSS", "Node.js", "Express.js", "TypeScript", "PostgresSQL", "Socket.io", "WebRTC"],
-      link: "https://github.com/UBX-CODE/MeetFlow",
-      link2: "https://meet-flow-six.vercel.app",
+      link: "https://github.com/UBX-CODE/FrogMeet",
+      link2: "https://frog-meet.vercel.app",
       images: [ "/3.png","/heropage.png"]
     },
     {
@@ -47,7 +47,7 @@ export const RESUME_DATA = {
       technologies: ["Python", "Typer", "GroqAPI", "GitCLI"],
       link: "https://github.com/UBX-CODE/Commitra",
       link2: "https://github.com/UBX-CODE/Commitra",
-      images: [ "/Commitra.jpeg"]
+      images: [ "/Commitra.png"]
     },
     {
       title: "Bac-Prac",
@@ -56,7 +56,7 @@ export const RESUME_DATA = {
       technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Redis"],
       link: "https://github.com/UBX-CODE/Backend-Prac",
       link2: "https://github.com/UBX-CODE/Backend-Prac",
-      images: [ "/Backend.JPG"]
+      images: [ "/Backend.jpg"]
     }
 
   ] as Project[],

@@ -22,7 +22,7 @@ const About: React.FC = () => {
         className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none opacity-5"
       >
         <span className="text-[25vw] font-sans font-black tracking-tighter whitespace-nowrap">
-          ARTISAN
+          UBX
         </span>
       </motion.div>
 
