@@ -4,7 +4,7 @@ import { RESUME_DATA } from '../data';
 import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
 import { ScrollReveal } from './ui/ScrollReveal';
 
-const ProjectCard = ({ project, index }: { project: any; index: number }) => {
+const ProjectCard = ({ project, index }: { project: any; index: number; key?: any }) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const numberY = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
@@ -24,7 +24,7 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
           <p className="font-serif text-[15px] leading-relaxed text-brand-charcoal/80 mb-10 border-l border-brand-charcoal/30 pl-6 text-justify">
             {project.description}
           </p>
-          
+
           <div className="mb-10">
             <h4 className="text-[10px] font-sans tracking-[0.2em] uppercase text-brand-charcoal/40 mb-4 border-b border-brand-charcoal/10 pb-2 inline-block">Technologies</h4>
             <div className="flex gap-2 flex-wrap">
@@ -61,21 +61,37 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
           </span>
         </motion.div>
 
-        <ScrollReveal direction="right" distance={36} className="relative z-10 w-full aspect-[6/3] bg-brand-charcoal/0 p-4 md:p-0">
-          <motion.div style={{ y: imgY }} className="w-full h-full overflow-hidden rounded-xl">
-            {project.images && project.images.length > 0 ? (
-              <img
-                src={project.images[0]}
-                alt={project.title}
-                className="w-full h-full object-cover shadow-sm md:shadow-2xl transition-all duration-1000 ease-out scale-100 group-hover:scale-105"
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center font-playfair italic text-brand-charcoal/20 text-2xl border border-brand-charcoal/10">
-                No Image Available
-              </div>
-            )}
-          </motion.div>
-        </ScrollReveal>
+        {/* Stable Image Frame & Grid Lines (No ScrollReveal on the lines) */}
+        <div className="relative z-10 w-full aspect-[6/3] p-2 md:p-3 bg-brand-charcoal/[0.015] backdrop-blur-[2px]">
+          {/* ── Infinite Boundary Horizontal Lines ── */}
+          <div className="absolute -left-[4vw] -right-[100vw] top-0 h-px border-b border-dashed border-brand-charcoal/20 pointer-events-none z-10" />
+          <div className="absolute -left-[4vw] -right-[100vw] bottom-0 h-px border-b border-dashed border-brand-charcoal/20 pointer-events-none z-10" />
+
+          {/* ── Infinite Vertical Lines ── */}
+          <div className="absolute -top-[1000px] -bottom-[1000px] left-0 w-px border-r border-dashed border-brand-charcoal/20 pointer-events-none z-10" />
+          <div className="absolute -top-[1000px] -bottom-[1000px] right-0 w-px border-r border-dashed border-brand-charcoal/20 pointer-events-none z-10" />
+
+          {/* ── Plus Crosshair Markers (+) at Boundary Intersections ── */}
+          <span className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-brand-charcoal/40 font-mono text-xs select-none pointer-events-none z-20">+</span>
+          <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 text-brand-charcoal/40 font-mono text-xs select-none pointer-events-none z-20">+</span>
+          <span className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 text-brand-charcoal/40 font-mono text-xs select-none pointer-events-none z-20">+</span>
+          <span className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 text-brand-charcoal/40 font-mono text-xs select-none pointer-events-none z-20">+</span>
+
+          {/* Image with ScrollReveal and subtle parallax */}
+            <motion.div style={{ y: imgY }} className="w-full h-full overflow-hidden relative border border-dashed border-brand-charcoal/15 bg-brand-charcoal/[0.02]">
+              {project.images && project.images.length > 0 ? (
+                <img
+                  src={project.images[0]}
+                  alt={project.title}
+                  className="w-full h-full object-cover shadow-sm md:shadow-2xl transition-all duration-1000 ease-out scale-100 hover:scale-105"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center font-playfair italic text-brand-charcoal/20 text-2xl">
+                  No Image Available
+                </div>
+              )}
+            </motion.div>
+        </div>
       </div>
     </div>
   );
@@ -96,19 +112,19 @@ const Projects: React.FC = () => {
     target: containerRef,
     offset: ["start end", "end start"]
   });
-  
+
   const generatePath = (w: number, h: number) => {
     if (!w || !h) return "M 0 0";
-    
+
     const cx = w * 0.5;
     // R controls the bulge width. 0.25w ensures it only reaches 75% right and 25% left, keeping it far from edges.
-    const R = Math.min(w * 0.25, 200); 
+    const R = Math.min(w * 0.25, 200);
     const v = h * 0.33; // 1/3 down for first loop
     const L = Math.min(v * 0.3, 300); // Vertical size of the teardrop loops
-    
+
     // Helper to format points
     const pt = (x: number, y: number) => `${x.toFixed(1)} ${y.toFixed(1)}`;
-    
+
     // Anchor Points
     const P0 = [cx, -100];
     const P1 = [cx, v];
@@ -116,28 +132,28 @@ const Projects: React.FC = () => {
     const P3 = [cx, v * 2];
     const P4 = [cx, v * 2 + L];
     const P5 = [cx, h + 100];
-    
+
     // Tangents (dx, dy) dictating the direction and curve intensity at each anchor
-    const T0 = [0, 200]; 
+    const T0 = [0, 200];
     const T1 = [R * 1.5, R * 1.5];   // down-right into loop 1
     const T2 = [-R * 1.5, R * 1.5];  // down-left out of loop 1
     const T3 = [-R * 1.5, R * 1.5];  // down-left into loop 2
     const T4 = [R * 1.5, R * 1.5];   // down-right out of loop 2
     const T5 = [0, 200];
-    
+
     let path = `M ${pt(P0[0], P0[1])} `;
-    
+
     // Segment 1: Start to Loop 1
-    path += `C ${pt(P0[0]+T0[0], P0[1]+T0[1])}, ${pt(P1[0]-T1[0], P1[1]-T1[1])}, ${pt(P1[0], P1[1])} `;
+    path += `C ${pt(P0[0] + T0[0], P0[1] + T0[1])}, ${pt(P1[0] - T1[0], P1[1] - T1[1])}, ${pt(P1[0], P1[1])} `;
     // Loop 1 (Right side)
-    path += `C ${pt(P1[0]+T1[0], P1[1]+T1[1])}, ${pt(P2[0]-T2[0], P2[1]-T2[1])}, ${pt(P2[0], P2[1])} `;
+    path += `C ${pt(P1[0] + T1[0], P1[1] + T1[1])}, ${pt(P2[0] - T2[0], P2[1] - T2[1])}, ${pt(P2[0], P2[1])} `;
     // Segment 2: Loop 1 to Loop 2
-    path += `C ${pt(P2[0]+T2[0], P2[1]+T2[1])}, ${pt(P3[0]-T3[0], P3[1]-T3[1])}, ${pt(P3[0], P3[1])} `;
+    path += `C ${pt(P2[0] + T2[0], P2[1] + T2[1])}, ${pt(P3[0] - T3[0], P3[1] - T3[1])}, ${pt(P3[0], P3[1])} `;
     // Loop 2 (Left side)
-    path += `C ${pt(P3[0]+T3[0], P3[1]+T3[1])}, ${pt(P4[0]-T4[0], P4[1]-T4[1])}, ${pt(P4[0], P4[1])} `;
+    path += `C ${pt(P3[0] + T3[0], P3[1] + T3[1])}, ${pt(P4[0] - T4[0], P4[1] - T4[1])}, ${pt(P4[0], P4[1])} `;
     // Segment 3: Loop 2 to End
-    path += `C ${pt(P4[0]+T4[0], P4[1]+T4[1])}, ${pt(P5[0]-T5[0], P5[1]-T5[1])}, ${pt(P5[0], P5[1])} `;
-    
+    path += `C ${pt(P4[0] + T4[0], P4[1] + T4[1])}, ${pt(P5[0] - T5[0], P5[1] - T5[1])}, ${pt(P5[0], P5[1])} `;
+
     return path;
   };
 
@@ -148,12 +164,12 @@ const Projects: React.FC = () => {
 
   return (
     <section ref={setRefs} id="projects" className="py-24 relative bg-brand-light overflow-hidden">
-      
+
       {/* Full-height Paper Plane Animation Layer */}
       {bounds.height > 0 && (
         <div className="absolute inset-0 pointer-events-none z-0 hidden lg:block opacity-40 dark:opacity-60">
           <svg viewBox={`0 0 ${bounds.width} ${bounds.height}`} className="w-full h-full absolute inset-0">
-            <motion.path 
+            <motion.path
               d={planePath}
               fill="none"
               stroke="currentColor"
@@ -163,7 +179,7 @@ const Projects: React.FC = () => {
               style={{ pathLength: pathDraw }}
             />
           </svg>
-          <motion.div 
+          <motion.div
             className="absolute top-0 left-0 w-8 h-8 text-brand-charcoal drop-shadow-md"
             style={{
               offsetPath: `path('${planePath}')`,
@@ -173,16 +189,17 @@ const Projects: React.FC = () => {
           >
             {/* Paper Plane Icon facing right natively */}
             <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full rotate-90 scale-125">
-              <path d="M2 12L22 2L15 22L11 13M22 2L11 13" stroke="currentColor" strokeWidth="1" strokeLinejoin="round"/>
+              <path d="M2 12L22 2L15 22L11 13M22 2L11 13" stroke="currentColor" strokeWidth="1" strokeLinejoin="round" />
             </svg>
           </motion.div>
         </div>
       )}
 
       <div className="container mx-auto px-6 relative z-10 max-w-[1200px]">
-        
+
         {/* Title Area */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 md:mb-32 border-b border-brand-charcoal/10 pb-6 gap-4">
+        <div className="relative flex flex-col md:flex-row justify-between items-start md:items-end mb-24 md:mb-32 pb-6 gap-4">
+          <div className="absolute -left-[100vw] -right-[100vw] bottom-0 h-px border-b border-dashed border-brand-charcoal/15 pointer-events-none" />
           <h2 className="text-sm tracking-[0.4em] uppercase font-sans font-bold text-brand-charcoal">
             Selected Works
           </h2>
@@ -198,7 +215,7 @@ const Projects: React.FC = () => {
 
         <div className="flex flex-col gap-32 md:gap-48">
           {RESUME_DATA.projects.map((project, index) => (
-            <ProjectCard  key={index} project={project} index={index} />
+            <ProjectCard key={index} project={project} index={index} />
           ))}
         </div>
       </div>

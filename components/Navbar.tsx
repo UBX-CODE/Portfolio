@@ -1,31 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import React, { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('Home');
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    if (document.documentElement.classList.contains('dark')) {
-      setIsDarkMode(true);
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    if (isDarkMode) {
-      document.documentElement.classList.remove('dark');
-      setIsDarkMode(false);
-    } else {
-      document.documentElement.classList.add('dark');
-      setIsDarkMode(true);
-    }
-  };
 
   const navLinks = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
+    { name: 'Activity', href: '#activity' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
@@ -33,14 +17,14 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <motion.header 
+      <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
         className="absolute top-0 left-0 right-0 z-50 py-8 px-6 md:px-12 w-full"
       >
         <div className="container mx-auto flex justify-between items-center text-brand-charcoal max-w-[1600px]">
-          
+
           {/* Logo */}
           <div className="flex-1">
             <a href="#home" className="text-xl md:text-2xl font-bold tracking-[0.15em] font-sans">
@@ -65,13 +49,6 @@ const Navbar: React.FC = () => {
           {/* Right Section */}
           <div className="flex-1 flex justify-end items-center gap-6 md:gap-8">
             <button
-              onClick={toggleTheme}
-              className="flex items-center justify-center w-10 h-10 rounded-full border border-brand-charcoal/20 text-brand-charcoal hover:bg-brand-charcoal hover:text-brand-light transition-colors duration-300"
-              aria-label="Toggle Theme"
-            >
-              {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
-            <button
               onClick={() => setIsOpen(!isOpen)}
               className="hidden lg:flex md:opacity-0 items-center gap-3 border border-brand-charcoal/20 px-6 py-2.5 rounded-full hover:bg-brand-charcoal hover:text-brand-light transition-colors duration-300"
             >
@@ -82,7 +59,7 @@ const Navbar: React.FC = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="lg:hidden text-brand-charcoal"
             >
-               {isOpen ? <X size={28} /> : <Menu size={28} />}
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>

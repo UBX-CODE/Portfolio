@@ -40,16 +40,7 @@ const Hero: React.FC = () => {
             <img 
               src="/me4.png" 
               alt="Ujjawal" 
-              className="w-full aspect-[784/1172] object-cover object-top grayscale mix-blend-multiply dark:hidden"
-              style={{ 
-                maskImage: 'linear-gradient(to bottom, rgba(184, 177, 177, 1) 50%, rgba(0,0,0,0) 100%)',
-                WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)' 
-              }}
-            />
-            <img 
-              src="/img6.png" 
-              alt="Ujjawal Dark" 
-              className="w-full md:h-130 object-cover object-top grayscale hidden dark:block"
+              className="w-full aspect-[784/1172] object-cover object-top grayscale mix-blend-multiply"
               style={{ 
                 maskImage: 'linear-gradient(to bottom, rgba(184, 177, 177, 1) 50%, rgba(0,0,0,0) 100%)',
                 WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)' 

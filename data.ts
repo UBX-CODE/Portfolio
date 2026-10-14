@@ -17,19 +17,19 @@ export const RESUME_DATA = {
   skills: [
     { category: "Languages", items: ["Java", "Python", "SQL", "JavaScript", "TypeScript"] },
     { category: "Web & Frameworks", items: ["Next.js", "React.js", "Node.js", "Express.js", "HTML", "CSS", "Tailwind CSS"] },
-    { category: "Databases", items: ["MySQL", "MongoDB", "Firebase","PostgreSQL"] },
+    { category: "Databases", items: ["MySQL", "MongoDB", "Firebase", "PostgreSQL"] },
     { category: "Tools & Cloud", items: ["AWS (Basics)", "Git/GitHub", "Postman", "VS Code", "Linux"] },
     { category: "Concepts", items: ["OOP", "DSA", "System Design", "DBMS", "Computer Networks"] }
   ] as SkillCategory[],
   projects: [
-        {
+    {
       title: "FrogMeet",
       type: "Video Conferencing App",
       description: "FrogMeet is a real-time video conferencing platform built with WebRTC and Socket.IO. It enables users to create and join meetings, preview audio and video before joining, and collaborate with features like live chat, screen sharing, participant management, and host controls.",
       technologies: ["React.js", "TailwindCSS", "Node.js", "Express.js", "TypeScript", "PostgresSQL", "Socket.io", "WebRTC"],
       link: "https://github.com/UBX-CODE/FrogMeet",
       link2: "https://frog-meet.vercel.app",
-      images: [ "/3.png","/heropage.png"]
+      images: ["/3.png", "/heropage.png"]
     },
     {
       title: "DevOS",
@@ -38,26 +38,26 @@ export const RESUME_DATA = {
       technologies: ["React.js", "TailwindCSS", "Node.js", "Express.js", "MongoDB", "GraphQL"],
       link: "https://github.com/UBX-CODE/DevOS",
       link2: "https://dev-os-iota.vercel.app",
-      images: [ "/LandingPage.png","/Dashboard.png"]
-    },
-    {
-      title: "Commitra",
-      type: "Operating System",
-      description: "Commitra — An agentic AI-powered CLI that analyzes Git diffs, understands code changes, and generates meaningful, context-aware commits.",
-      technologies: ["Python", "Typer", "GroqAPI", "GitCLI"],
-      link: "https://github.com/UBX-CODE/Commitra",
-      link2: "https://github.com/UBX-CODE/Commitra",
-      images: [ "/Commitra.png"]
-    },
-    {
-      title: "Bac-Prac",
-      type: "Operating System",
-      description: "A collection of backend microservices and full-stack projects built with Node.js, Express, MongoDB, and Redis to practice modern system design, web sockets, and backend engineering.",
-      technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Redis"],
-      link: "https://github.com/UBX-CODE/Backend-Prac",
-      link2: "https://github.com/UBX-CODE/Backend-Prac",
-      images: [ "/Backend.jpg"]
+      images: ["/LandingPage.png", "/Dashboard.png"]
     }
+    // {
+    //   title: "Commitra",
+    //   type: "Operating System",
+    //   description: "Commitra — An agentic AI-powered CLI that analyzes Git diffs, understands code changes, and generates meaningful, context-aware commits.",
+    //   technologies: ["Python", "Typer", "GroqAPI", "GitCLI"],
+    //   link: "https://github.com/UBX-CODE/Commitra",
+    //   link2: "https://github.com/UBX-CODE/Commitra",
+    //   images: ["/Commitra.png"]
+    // },
+    // {
+    //   title: "Bac-Prac",
+    //   type: "Operating System",
+    //   description: "A collection of backend microservices and full-stack projects built with Node.js, Express, MongoDB, and Redis to practice modern system design, web sockets, and backend engineering.",
+    //   technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Redis"],
+    //   link: "https://github.com/UBX-CODE/Backend-Prac",
+    //   link2: "https://github.com/UBX-CODE/Backend-Prac",
+    //   images: ["/Backend.jpg"]
+    // }
 
   ] as Project[],
   certifications: [
