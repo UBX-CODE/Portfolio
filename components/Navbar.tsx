@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('Home');
 
   const navLinks = [
     { name: 'Home', href: '#home' },
@@ -38,7 +37,6 @@ const Navbar: React.FC = () => {
               <a
                 key={link.name}
                 href={link.href}
-                onClick={() => setActiveTab(link.name)}
                 className="group flex flex-col items-center gap-2 text-[13px] font-semibold font-sans text-brand-charcoal hover:opacity-70 transition-opacity"
               >
                 <span>{link.name}</span>
@@ -48,13 +46,6 @@ const Navbar: React.FC = () => {
 
           {/* Right Section */}
           <div className="flex-1 flex justify-end items-center gap-6 md:gap-8">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="hidden lg:flex md:opacity-0 items-center gap-3 border border-brand-charcoal/20 px-6 py-2.5 rounded-full hover:bg-brand-charcoal hover:text-brand-light transition-colors duration-300"
-            >
-              <Menu size={16} />
-              <span className="text-[11px] font-sans font-bold tracking-widest uppercase">Menu</span>
-            </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="lg:hidden text-brand-charcoal"

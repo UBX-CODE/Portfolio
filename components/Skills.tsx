@@ -160,6 +160,7 @@ const SkillCard: React.FC<{
           <div className="flex flex-wrap gap-3">
             {skillGroup.items.map((item, idx) => (
               <SkillPill
+                key={item}
                 item={item}
                 idx={idx}
                 total={skillGroup.items.length}
@@ -179,6 +180,7 @@ const SkillPill = ({
   total,
   scrollYProgress,
 }: {
+  key?: React.Key;
   item: string;
   idx: number;
   total: number;

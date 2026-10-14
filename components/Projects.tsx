@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import useMeasure from 'react-use-measure';
 import { RESUME_DATA } from '../data';
-import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
+import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
 import { ScrollReveal } from './ui/ScrollReveal';
 
 const ProjectCard = ({ project, index }: { project: any; index: number; key?: any }) => {
@@ -96,8 +97,6 @@ const ProjectCard = ({ project, index }: { project: any; index: number; key?: an
     </div>
   );
 };
-
-import useMeasure from 'react-use-measure';
 
 const Projects: React.FC = () => {
   const containerRef = useRef<HTMLElement>(null);

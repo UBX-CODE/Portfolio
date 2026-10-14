@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { RESUME_DATA } from '../data';
 import { ScrollReveal } from './ui/ScrollReveal';
 
 const About: React.FC = () => {

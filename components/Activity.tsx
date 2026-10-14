@@ -1,15 +1,9 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   Github,
   Code2,
   Flame,
-  Calendar,
-  Sparkles,
-  ExternalLink,
   RefreshCw,
-  Trophy,
-  CheckCircle2,
 } from 'lucide-react';
 
 interface DayData {

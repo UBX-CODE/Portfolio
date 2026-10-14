@@ -13,13 +13,6 @@ export interface SkillCategory {
   items: string[];
 }
 
-export interface Experience {
-  role: string;
-  company: string;
-  duration: string;
-  description: string;
-}
-
 export interface Certification {
   name: string;
   issuer: string;

@@ -40,25 +40,6 @@ export const RESUME_DATA = {
       link2: "https://dev-os-iota.vercel.app",
       images: ["/LandingPage.png", "/Dashboard.png"]
     }
-    // {
-    //   title: "Commitra",
-    //   type: "Operating System",
-    //   description: "Commitra — An agentic AI-powered CLI that analyzes Git diffs, understands code changes, and generates meaningful, context-aware commits.",
-    //   technologies: ["Python", "Typer", "GroqAPI", "GitCLI"],
-    //   link: "https://github.com/UBX-CODE/Commitra",
-    //   link2: "https://github.com/UBX-CODE/Commitra",
-    //   images: ["/Commitra.png"]
-    // },
-    // {
-    //   title: "Bac-Prac",
-    //   type: "Operating System",
-    //   description: "A collection of backend microservices and full-stack projects built with Node.js, Express, MongoDB, and Redis to practice modern system design, web sockets, and backend engineering.",
-    //   technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Redis"],
-    //   link: "https://github.com/UBX-CODE/Backend-Prac",
-    //   link2: "https://github.com/UBX-CODE/Backend-Prac",
-    //   images: ["/Backend.jpg"]
-    // }
-
   ] as Project[],
   certifications: [
     { name: "Machine Learning with Python", issuer: "IBM" },
